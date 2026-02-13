@@ -1,0 +1,64 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-update-the-configured-discord-invite-url-constant-to-exactly-https-discord-gg-black-exe-and-ensure-all-discord-links-across-the-site-contact-section-dashboard-support-payment-panel-use-this-constant-no-hardcoded-or-outdated-discord-urls",
+      "featureTitle": "Update the configured Discord invite URL constant to exactly \"https://discord.gg/black-exe\" and ensure all Discord links across the site (Contact section, Dashboard Support, Payment panel) use this constant (no hardcoded or outdated Discord URLs).",
+      "files": [
+        "frontend/src/components/marketing/DashboardSection.tsx",
+        "frontend/src/components/marketing/PaymentPanel.tsx",
+        "frontend/src/config/social.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-22"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-remove-the-qr-code-image-payment-ui-from-the-dashboard-payment-experience-and-replace-it-with-a-upi-id-based-payment-ui-that-displays-the-upi-id-9352000693-axl-and-provides-a-clear-copy-to-clipboard-control-all-user-facing-text-in-this-payment-ui-must-be-in-english",
+      "featureTitle": "Remove the QR-code image payment UI from the Dashboard Payment experience and replace it with a UPI-ID-based payment UI that displays the UPI ID \"9352000693@axl\" and provides a clear copy-to-clipboard control. All user-facing text in this Payment UI must be in English.",
+      "files": [
+        "frontend/src/components/marketing/PaymentPanel.tsx",
+        "frontend/src/config/payment.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-23"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-change-the-panel-buy-now-interaction-so-that-when-a-user-clicks-buy-now-or-clicks-a-panel-card-the-app-shows-the-upi-payment-details-upi-id-and-copy-action-and-provides-whatsapp-discord-options-to-confirm-payment-without-immediately-opening-whatsapp-for-purchase-the-confirmation-options-must-remain-available-via-buttons-links-in-the-payment-view",
+      "featureTitle": "Change the panel \"BUY NOW\" interaction so that when a user clicks BUY NOW (or clicks a panel card), the app shows the UPI payment details (UPI ID and copy action) and provides WhatsApp/Discord options to confirm payment—without immediately opening WhatsApp for purchase. The confirmation options must remain available via buttons/links in the payment view.",
+      "files": [
+        "frontend/src/components/marketing/PanelCard.tsx",
+        "frontend/src/components/marketing/PanelsSection.tsx",
+        "frontend/src/components/marketing/PaymentPanel.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-24"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

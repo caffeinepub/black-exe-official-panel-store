@@ -1,0 +1,317 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 13,
+  "summary": "Switch the payment experience from QR-based to UPI-ID-based: remove the QR image, show a copyable UPI ID on buy/payment interaction, and update Discord invite link to https://discord.gg/black-exe while keeping WhatsApp/Discord payment confirmation flow.",
+  "architectural_notes": [
+    "External purchase flow via WhatsApp deep-link to +923137863480 with prefilled message including selected panel name.",
+    "Site visual direction: fully dark cyberpunk/hacker UI with neon blue/purple glow, glassmorphism panels, and hover glow animations.",
+    "Discord invite link placeholder must be replaced with the real server invite URL.",
+    "Prefer in-place content reveal for dashboard subsections (tabs/accordion/modal) rather than scroll-to behavior when users click dashboard buttons.",
+    "Dashboard/section content should remain collapsed by default and only reveal/activate on button click; avoid showing all subsections just by scrolling; maintain premium UI styling.",
+    "Discord invite link constant should be set to: https://discord.gg/black-exe and used everywhere (Contact + Dashboard Support/Payment).",
+    "Payment flow change: remove QR image-based payment and use UPI ID 9352000693@axl instead, with a copy-to-clipboard control.",
+    "On BUY NOW (or in-dashboard Payment), show UPI ID first and provide WhatsApp/Discord actions for payment confirmation/proof submission."
+  ],
+  "known_issues": [
+    "Dashboard content currently appears while scrolling instead of being activated only on button click (should be collapsed/toggled).",
+    "Payment currently uses QR image(s); must be removed and replaced with copyable UPI ID 9352000693@axl.",
+    "Discord invite link must be updated to https://discord.gg/black-exe."
+  ],
+  "isFixRequest": true,
+  "existing_features": [
+    {
+      "id": "feature-create-a-single-page-responsive-marketing-website-for-black-exe-official-panel-store-owner-name-black-exe-with-a-fully-dark-cyberpunk-hacker-ui-style-dark-black-background-neon-blue-purple-glow-accents-bold-futuristic-gaming-typography-glassmorphism-panels-blurred-translucent-cards-and-hover-glow-animations-on-cards-and-buttons",
+      "title": "Create a single-page responsive marketing website for “BLACK EXE OFFICIAL PANEL STORE” (owner name: BLACK EXE) with a fully dark cyberpunk/hacker UI style: dark/black background, neon blue & purple glow accents, bold futuristic gaming typography, glassmorphism panels (blurred translucent cards), and hover glow animations on cards and buttons.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-the-home-hero-section-with-the-exact-headline-and-subtext-main-heading-black-exe-official-panel-store-sub-text-cheap-premium-gaming-panels",
+      "title": "Implement the Home/Hero section with the exact headline and subtext:\n- Main heading: “BLACK EXE OFFICIAL PANEL STORE”\n- Sub text: “CHEAP & PREMIUM GAMING PANELS”",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-panels-section-containing-10-bold-glowing-glass-cards-one-per-panel-basic-brutal-premium-aimkill-silent-aim-aimbot-visible-internal-uid-bypass-streamer-silent-aim-cover-each-card-must-display-its-price-list-1-day-2-days-7-days-1-month-permanent-exactly-as-provided-in-inr",
+      "title": "Add a “Panels” section containing 10 bold glowing glass cards (one per panel): BASIC, BRUTAL, PREMIUM, AIMKILL, SILENT AIM, AIMBOT VISIBLE, INTERNAL, UID BYPASS, STREAMER, SILENT AIM COVER. Each card must display its price list (1 DAY, 2 DAYS, 7 DAYS, 1 MONTH, PERMANENT) exactly as provided in INR.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-the-buy-flow-each-panel-card-and-its-bold-glowing-buy-now-button-must-link-to-whatsapp-number-923137863480-with-a-prefilled-message-exactly-hello-black-exe-i-want-to-buy-panel-name-where-panel-name-is-replaced-by-the-clicked-panel-s-name-ensure-the-link-properly-url-encodes-spaces-and-special-characters",
+      "title": "Implement the buy flow: each panel card and its bold glowing “BUY NOW” button must link to WhatsApp number +923137863480 with a prefilled message exactly: “Hello BLACK EXE, I want to buy [Panel Name]” where [Panel Name] is replaced by the clicked panel’s name. Ensure the link properly URL-encodes spaces and special characters.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-bold-neon-pricing-table-section-that-consolidates-all-durations-and-prices-for-all-panels-into-a-readable-table-mobile-friendly-allow-horizontal-scroll-or-convert-to-stacked-rows-cards-on-small-screens",
+      "title": "Add a bold neon “Pricing Table” section that consolidates all durations and prices for all panels into a readable table (mobile-friendly: allow horizontal scroll or convert to stacked rows/cards on small screens).",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-contact-section-with-two-big-glowing-buttons-1-whatsapp-button-showing-the-label-whatsapp-923137863480-linking-to-the-whatsapp-chat-2-discord-button-showing-the-label-discord-real-invite-link-with-a-discord-icon-and-neon-glow-effect-the-discord-link-must-not-use-the-placeholder-url-implement-the-invite-url-as-a-single-configurable-constant-so-it-can-be-replaced-easily-without-hunting-through-the-ui-code",
+      "title": "Add a Contact section with two big glowing buttons:\n1) WhatsApp button showing the label “WHATSAPP: +923137863480” linking to the WhatsApp chat.\n2) Discord button showing the label “DISCORD: <real invite link>” with a Discord icon and neon glow effect.\nThe Discord link must not use the placeholder URL; implement the invite URL as a single configurable constant so it can be replaced easily without hunting through the UI code.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-the-footer-with-the-exact-text-2026-black-exe-all-rights-reserved",
+      "title": "Add the footer with the exact text: “© 2026 BLACK EXE – ALL RIGHTS RESERVED”.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-integrate-generated-brand-assets-as-static-images-in-the-frontend-place-them-under-frontend-public-assets-generated-and-use-them-in-the-ui-use-the-logo-image-in-the-header-hero-area-use-the-banner-image-as-a-hero-background-or-prominent-top-banner-element-without-making-text-unreadable",
+      "title": "Integrate generated brand assets as static images in the frontend (place them under frontend/public/assets/generated) and use them in the UI:\n- Use the logo image in the header/hero area.\n- Use the banner image as a hero background or prominent top banner element (without making text unreadable).",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-new-dashboard-section-to-the-existing-single-page-site-without-removing-the-current-hero-panels-pricing-table-contact-and-footer-sections-the-dashboard-must-visually-match-the-current-dark-cyberpunk-glassmorphism-style-and-be-responsive",
+      "title": "Add a new “Dashboard” section to the existing single-page site (without removing the current Hero, Panels, Pricing Table, Contact, and Footer sections). The Dashboard must visually match the current dark cyberpunk/glassmorphism style and be responsive.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-inside-the-dashboard-implement-3-4-clear-subsections-cards-or-tabs-with-english-labels-include-at-minimum-panels-profile-changer-and-support-add-one-additional-section-of-your-choice-e-g-status-or-faq-but-keep-it-informational-only-no-new-purchase-logic",
+      "title": "Inside the Dashboard, implement 3–4 clear subsections (cards or tabs) with English labels. Include at minimum: “Panels”, “Profile Changer”, and “Support”. Add one additional section of your choice (e.g., “Status” or “FAQ”) but keep it informational only (no new purchase logic).",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-make-the-dashboard-subsections-navigable-within-the-page-clicking-a-dashboard-item-must-scroll-to-or-reveal-its-corresponding-content-block-within-the-dashboard-section-for-panels-link-scroll-to-the-existing-available-panels-section-or-provide-a-clear-in-dashboard-shortcut-that-takes-the-user-there",
+      "title": "Make the Dashboard subsections navigable within the page: clicking a Dashboard item must scroll to (or reveal) its corresponding content block within the Dashboard section. For “Panels”, link/scroll to the existing “AVAILABLE PANELS” section or provide a clear in-dashboard shortcut that takes the user there.",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-new-in-dashboard-payment-experience-that-lets-users-pay-via-qr-code-and-then-send-payment-proof-via-whatsapp-or-discord-without-requiring-the-user-to-scroll-to-another-section",
+      "title": "Add a new in-dashboard \"Payment\" experience that lets users pay via QR code and then send payment proof via WhatsApp or Discord, without requiring the user to scroll to another section.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-use-the-two-uploaded-images-image-png-and-image-1-png-as-the-payment-qr-visuals-and-integrate-them-as-static-frontend-assets-displayed-responsively-with-a-cyberpunk-glass-ui-frame",
+      "title": "Use the two uploaded images (image.png and image-1.png) as the payment QR visuals and integrate them as static frontend assets, displayed responsively with a cyberpunk/glass UI frame.",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-send-payment-proof-buttons-that-open-whatsapp-and-discord-with-clear-english-prefilled-guidance-for-what-proof-to-send-whatsapp-deep-link-must-use-the-existing-whatsapp-number-constant-923137863480-and-must-url-encode-the-message",
+      "title": "Implement \"Send Payment Proof\" buttons that open WhatsApp and Discord with clear English prefilled guidance for what proof to send; WhatsApp deep-link must use the existing WhatsApp number constant (+923137863480) and must URL-encode the message.",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-change-the-dashboard-behavior-so-clicking-dashboard-items-opens-reveals-content-in-place-tabs-accordion-and-does-not-auto-scroll-the-page-downward-keep-an-optional-explicit-go-to-available-panels-button-link-for-users-who-still-want-to-jump-to-the-panels-section",
+      "title": "Change the Dashboard behavior so clicking Dashboard items opens/reveals content in-place (tabs/accordion) and does not auto-scroll the page downward; keep an optional explicit \"Go to Available Panels\" button/link for users who still want to jump to the Panels section.",
+      "reqIds": [
+        "REQ-15"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-fix-dashboard-support-links-to-use-the-configured-constants-and-the-correct-whatsapp-number-discord-invite-url-no-hardcoded-placeholder-numbers-links",
+      "title": "Fix Dashboard \"Support\" links to use the configured constants and the correct WhatsApp number/Discord invite URL (no hardcoded placeholder numbers/links).",
+      "reqIds": [
+        "REQ-16"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-in-dashboard-payment-ui-to-display-only-one-qr-code-and-remove-hide-any-additional-qr-code-s-keep-the-remaining-qr-responsive-centered-and-inside-the-existing-cyberpunk-glass-ui-frame",
+      "title": "Update the in-dashboard Payment UI to display only ONE QR code and remove/hide any additional QR code(s). Keep the remaining QR responsive, centered, and inside the existing cyberpunk/glass UI frame.",
+      "reqIds": [
+        "REQ-17"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-change-the-overall-single-page-layout-so-that-each-major-area-is-in-its-own-separate-section-that-does-not-all-appear-just-by-scrolling-only-the-selected-section-should-be-active-visible-when-the-user-clicks-its-button-tab-e-g-home-dashboard-available-panels-pricing-table-contact",
+      "title": "Change the overall single-page layout so that each major area is in its own separate section that does NOT all appear just by scrolling. Only the selected section should be active/visible when the user clicks its button/tab (e.g., Home, Dashboard, Available Panels, Pricing Table, Contact).",
+      "reqIds": [
+        "REQ-18"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-polish-the-ui-to-feel-more-premium-while-keeping-the-existing-dark-cyberpunk-glassmorphism-style-neon-accents-glow-states-consistent-spacing-typography-apply-the-premium-styling-consistently-to-the-new-section-navigation-and-to-the-payment-tab-content",
+      "title": "Polish the UI to feel more premium while keeping the existing dark cyberpunk/glassmorphism style (neon accents, glow states, consistent spacing/typography). Apply the premium styling consistently to the new section navigation and to the Payment tab content.",
+      "reqIds": [
+        "REQ-19"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-in-dashboard-payment-qr-display-so-the-full-qr-image-is-always-visible-not-cropped-or-partially-hidden-on-all-screen-sizes-while-keeping-the-existing-cyberpunk-glass-ui-frame-styling",
+      "title": "Update the in-dashboard Payment QR display so the full QR image is always visible (not cropped or partially hidden) on all screen sizes, while keeping the existing cyberpunk/glass UI frame styling.",
+      "reqIds": [
+        "REQ-20"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-integrate-the-newly-uploaded-qr-image-file-image-2-png-as-the-single-payment-qr-asset-under-frontend-public-assets-generated-and-update-the-payment-ui-to-use-this-file-as-the-displayed-enlarged-qr-image-source",
+      "title": "Integrate the newly uploaded QR image file (image-2.png) as the single Payment QR asset under frontend/public/assets/generated and update the Payment UI to use this file as the displayed/enlarged QR image source.",
+      "reqIds": [
+        "REQ-21"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-configured-discord-invite-url-constant-to-exactly-https-discord-gg-black-exe-and-ensure-all-discord-links-across-the-site-contact-section-dashboard-support-payment-panel-use-this-constant-no-hardcoded-or-outdated-discord-urls",
+      "title": "Update the configured Discord invite URL constant to exactly \"https://discord.gg/black-exe\" and ensure all Discord links across the site (Contact section, Dashboard Support, Payment panel) use this constant (no hardcoded or outdated Discord URLs).",
+      "reqIds": [
+        "REQ-22"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-the-qr-code-image-payment-ui-from-the-dashboard-payment-experience-and-replace-it-with-a-upi-id-based-payment-ui-that-displays-the-upi-id-9352000693-axl-and-provides-a-clear-copy-to-clipboard-control-all-user-facing-text-in-this-payment-ui-must-be-in-english",
+      "title": "Remove the QR-code image payment UI from the Dashboard Payment experience and replace it with a UPI-ID-based payment UI that displays the UPI ID \"9352000693@axl\" and provides a clear copy-to-clipboard control. All user-facing text in this Payment UI must be in English.",
+      "reqIds": [
+        "REQ-23"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-change-the-panel-buy-now-interaction-so-that-when-a-user-clicks-buy-now-or-clicks-a-panel-card-the-app-shows-the-upi-payment-details-upi-id-and-copy-action-and-provides-whatsapp-discord-options-to-confirm-payment-without-immediately-opening-whatsapp-for-purchase-the-confirmation-options-must-remain-available-via-buttons-links-in-the-payment-view",
+      "title": "Change the panel \"BUY NOW\" interaction so that when a user clicks BUY NOW (or clicks a panel card), the app shows the UPI payment details (UPI ID and copy action) and provides WhatsApp/Discord options to confirm payment—without immediately opening WhatsApp for purchase. The confirmation options must remain available via buttons/links in the payment view.",
+      "reqIds": [
+        "REQ-24"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Create dark cyberpunk/neon UI website with responsive layout, glassmorphism cards, hover glow animations, and futuristic gaming typography",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Home page content: main heading “BLACK EXE OFFICIAL PANEL STORE” and subtext “CHEAP & PREMIUM GAMING PANELS”",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Panels section with neon glass cards for 10 panels (BASIC, BRUTAL, PREMIUM, AIMKILL, SILENT AIM, AIMBOT VISIBLE, INTERNAL, UID BYPASS, STREAMER, SILENT AIM COVER) including listed INR duration pricing inside each card",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Buy system: BUY NOW button and card click redirects to WhatsApp +923137863480 with prefilled message “Hello BLACK EXE, I want to buy [Panel Name]”",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Add a bold neon pricing table containing all durations and prices",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Contact section with big glowing WhatsApp button (+923137863480) and Discord button with icon and neon glow (using a real Discord invite link)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Footer: “© 2026 BLACK EXE – ALL RIGHTS RESERVED”",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Design requirements for brand assets: hacker esports logo (transparent background) and website banner matching cyberpunk theme",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-9",
+      "summary": "Add a dashboard area/page with 3–4 sections (e.g., Profile Changer/Panel section) and include a dedicated Support section",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-10",
+      "summary": "Add payment option via QR code for buying panels, and add a clear payment-proof submission flow (WhatsApp/Discord link) with improved UI",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-11",
+      "summary": "Improve dashboard interaction: clicking a button should open/reveal the related content in-place (e.g., tabs/accordion/modal) instead of scrolling down the page",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-12",
+      "summary": "Payment section: show only 1 QR code and remove the extra QR(s)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-13",
+      "summary": "Dashboard/sections UX: keep each thing in its own section but do not show all content on scroll; content should stay off/collapsed until its button is clicked, with a more premium UI",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-14",
+      "summary": "Update Discord invite link everywhere to https://discord.gg/black-exe (use configured constant; no placeholders)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-15",
+      "summary": "Remove Payment QR photo/image UI and replace with UPI ID 9352000693@axl displayed in the payment/buy flow",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-16",
+      "summary": "Make UPI ID 9352000693@axl copyable (copy-to-clipboard UI) and show it when user clicks BUY (then provide WhatsApp/Discord buttons for payment confirmation/proof)",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "BLACK EXE OFFICIAL PANEL STORE",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

@@ -1,0 +1,87 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Replace QR payment with copyable UPI ID flow and standardize Discord invite URL usage",
+  "requirements": [
+    {
+      "id": "REQ-22",
+      "summary": "Update Discord invite URL constant and ensure all Discord links use the shared constant",
+      "acceptanceCriteria": [
+        "`frontend/src/config/social.ts` exports `DISCORD_INVITE_URL` as exactly `https://discord.gg/black-exe`.",
+        "All UI locations that link to Discord (ContactSection, DashboardSection Support tab, PaymentPanel) navigate to `https://discord.gg/black-exe`.",
+        "No remaining occurrences of the old Discord URL (e.g., `https://discord.gg/blackexe`) are used for navigation."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/config/social.ts",
+          "operation": "modify",
+          "description": "Change `DISCORD_INVITE_URL` to exactly `https://discord.gg/black-exe` and keep it as the single source of truth for Discord navigation."
+        },
+        {
+          "path": "frontend/src/components/marketing/ContactSection.tsx",
+          "operation": "modify",
+          "description": "Verify the Discord contact button uses `DISCORD_INVITE_URL` from `frontend/src/config/social.ts` (no hardcoded Discord URL)."
+        },
+        {
+          "path": "frontend/src/components/marketing/DashboardSection.tsx",
+          "operation": "modify",
+          "description": "Verify the Support tab Discord link uses `DISCORD_INVITE_URL` from `frontend/src/config/social.ts` (no hardcoded Discord URL)."
+        },
+        {
+          "path": "frontend/src/components/marketing/PaymentPanel.tsx",
+          "operation": "modify",
+          "description": "Verify the payment confirmation Discord link uses `DISCORD_INVITE_URL` from `frontend/src/config/social.ts` (no hardcoded Discord URL)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-23",
+      "summary": "Replace QR-based Payment panel with an English-only UPI ID display and copy-to-clipboard control",
+      "acceptanceCriteria": [
+        "The Payment panel no longer renders any QR image (no `<img>` with QR assets, no 'Tap to enlarge', no 'Scan to Pay' QR instructions).",
+        "The Payment panel displays the exact UPI ID text `9352000693@axl` prominently inside the existing cyberpunk/glass UI styling.",
+        "A copy-to-clipboard control is present and copies `9352000693@axl` to the clipboard.",
+        "After copying, the UI provides a visible confirmation state in English (e.g., 'Copied' / 'UPI ID copied')."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/config/payment.ts",
+          "operation": "create",
+          "description": "Create a small payment config exporting the UPI ID constant `9352000693@axl` so it can be reused consistently across Payment UI and the BUY NOW flow."
+        },
+        {
+          "path": "frontend/src/components/marketing/PaymentPanel.tsx",
+          "operation": "modify",
+          "description": "Remove the entire QR image section and QR-specific instructions; replace with a UPI-ID-based UI that prominently shows `9352000693@axl`, includes a copy-to-clipboard control, and shows an English confirmation state after copying. Keep the existing cyberpunk/glass styling and retain the WhatsApp/Discord proof actions as buttons/links."
+        }
+      ]
+    },
+    {
+      "id": "REQ-24",
+      "summary": "Change BUY NOW/panel-card click to open an in-app payment step with UPI details and WhatsApp/Discord confirmation options (no instant WhatsApp open)",
+      "acceptanceCriteria": [
+        "Clicking a panel card or its \"BUY NOW\" button opens an in-app payment step that shows the UPI ID `9352000693@axl` with copy-to-clipboard and the payment confirmation buttons (WhatsApp and Discord).",
+        "The prior behavior of instantly opening WhatsApp on panel click/BUY NOW is removed for this interaction.",
+        "The WhatsApp confirmation link still uses the existing WhatsApp number constant `+923137863480` and remains URL-encoded.",
+        "If a panel name is available from the clicked card, the WhatsApp payment-proof message includes the panel name (using the existing `buildPaymentProofWhatsAppLink(panelName?)` capability)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/marketing/PanelCard.tsx",
+          "operation": "modify",
+          "description": "Replace the current behavior that opens WhatsApp on card click/BUY NOW with a callback-driven interaction (e.g., `onBuy(panelName)`), so the parent can show an in-app payment step instead of immediately opening WhatsApp. Preserve keyboard accessibility behavior."
+        },
+        {
+          "path": "frontend/src/components/marketing/PanelsSection.tsx",
+          "operation": "modify",
+          "description": "Wire the new panel purchase interaction by tracking the selected panel name and conditionally rendering the in-app payment step (reuse `PaymentPanel` with a `panelName` prop). Ensure the payment view contains WhatsApp + Discord confirmation actions that remain available as buttons/links."
+        },
+        {
+          "path": "frontend/src/components/marketing/PaymentPanel.tsx",
+          "operation": "modify",
+          "description": "Extend `PaymentPanel` to support an optional `panelName` input for the in-app purchase flow; when provided, use `buildPaymentProofWhatsAppLink(panelName)` for the WhatsApp confirmation action and keep the Discord action using `DISCORD_INVITE_URL`. Ensure the component only presents details/actions and never auto-opens WhatsApp."
+        }
+      ]
+    }
+  ]
+}

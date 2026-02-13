@@ -1,0 +1,42 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-13T18:37:20.256Z",
+  "summary": "The diff updates the Discord invite URL constant, replaces the QR-based payment UI with a UPI ID + copy-to-clipboard flow, and changes the BUY NOW interaction to open an in-app payment view (modal) instead of immediately opening WhatsApp. Some acceptance criteria about ensuring *all* Discord links use the constant and that no old Discord URLs remain cannot be fully verified from the provided truncated diff summary.",
+  "missing_requirements": [
+    {
+      "id": "REQ-22",
+      "requirement": "Ensure all Discord links across the site (Contact section, Dashboard Support, Payment panel) use the DISCORD_INVITE_URL constant and that no old Discord URL occurrences remain for navigation.",
+      "reason": "While the constant is updated in config and some components import it, the diff summary does not provide enough concrete code evidence for all required UI link locations (ContactSection, Dashboard Support tab, and PaymentPanel) nor proof that no old Discord URLs remain anywhere.",
+      "evidence": [
+        "frontend/src/config/social.ts",
+        "frontend/src/components/marketing/DashboardSection.tsx (truncated)",
+        "frontend/src/components/marketing/PaymentPanel.tsx (truncated)",
+        "frontend-file-summaries.txt (mentions ContactSection using updated URL but no code shown)"
+      ]
+    },
+    {
+      "id": "REQ-24",
+      "requirement": "Clicking BUY NOW or a panel card opens an in-app payment step showing UPI details with copy-to-clipboard and WhatsApp/Discord confirmation options (buttons/links) in the payment view.",
+      "reason": "The modal payment step and UPI copy control are evidenced, but the truncated PaymentPanel snippet does not show the WhatsApp/Discord confirmation buttons/links implementation; it is only asserted in the file summaries.",
+      "evidence": [
+        "frontend/src/components/marketing/PanelsSection.tsx",
+        "frontend/src/components/marketing/PaymentPanel.tsx (truncated)",
+        "frontend-file-summaries.txt (states WhatsApp/Discord confirmation buttons exist, but code not shown)"
+      ]
+    }
+  ],
+  "hallucinated_features": [],
+  "confidence": 0.64,
+  "changed_files": [
+    "frontend-file-summaries.txt",
+    "frontend/src/components/marketing/DashboardSection.tsx",
+    "frontend/src/components/marketing/PanelCard.tsx",
+    "frontend/src/components/marketing/PanelsSection.tsx",
+    "frontend/src/components/marketing/PaymentPanel.tsx",
+    "frontend/src/config/payment.ts",
+    "frontend/src/config/social.ts",
+    "frontend/src/utils/paymentProof.ts",
+    "project_state.json"
+  ]
+}

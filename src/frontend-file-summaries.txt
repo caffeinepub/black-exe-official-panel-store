@@ -1,0 +1,22 @@
+{
+  "frontend/src/index.css": "Global styles with OKLCH cyberpunk color system, glassmorphism effects, neon glow utilities, premium navigation states (active/inactive with shimmer animations), dashboard tab styling, section fade-in transitions, and single QR frame styling.",
+  "frontend/tailwind.config.js": "Extended Tailwind configuration with cyberpunk color tokens (neon-blue, neon-purple, neon-cyan), custom font families (Orbitron, Rajdhani, Exo 2), neon shadow utilities, and pulse-glow animation for premium UI effects.",
+  "frontend/index.html": "HTML entry point with Google Fonts preconnect for Orbitron, Rajdhani, and Exo 2 futuristic gaming fonts, and dark mode class on body.",
+  "frontend/src/App.tsx": "Main application component with section-based navigation state management, conditionally rendering one major section at a time (Home, Dashboard, Panels, Pricing, Contact) with smooth transitions and footer always visible.",
+  "frontend/src/data/panels.ts": "Centralized data source defining all 10 gaming panels with their exact INR pricing for 5 durations (1 DAY through PERMANENT).",
+  "frontend/src/config/social.ts": "Social contact configuration constants with updated Discord invite URL (https://discord.gg/black-exe) and WhatsApp number.",
+  "frontend/src/utils/whatsapp.ts": "Utility function to build WhatsApp deep links with URL-encoded prefilled message template including panel name.",
+  "frontend/src/components/icons/DiscordIcon.tsx": "SVG Discord logo icon component for use in the contact section button.",
+  "frontend/src/components/marketing/SiteHeader.tsx": "Sticky header with BLACK EXE logo and branding using glassmorphism and neon glow effects.",
+  "frontend/src/components/marketing/HeroSection.tsx": "Hero section with banner background image, main headline, subtext, and cyberpunk styling with neon glow animations.",
+  "frontend/src/components/marketing/PanelCard.tsx": "Panel card component with callback-driven purchase interaction (onBuy) instead of direct WhatsApp navigation, preserving keyboard accessibility.",
+  "frontend/src/components/marketing/PanelsSection.tsx": "Panels section with modal-based payment flow that opens PaymentPanel when a panel card is clicked, passing the selected panel name for contextual payment proof.",
+  "frontend/src/components/marketing/PricingTableSection.tsx": "Comprehensive pricing table with desktop table view and mobile card layout showing all panels and durations.",
+  "frontend/src/components/marketing/ContactSection.tsx": "Contact section with WhatsApp and Discord buttons using the updated Discord invite URL from social config.",
+  "frontend/src/components/marketing/SiteFooter.tsx": "Footer with copyright text and Caffeine.ai attribution with UTM tracking and heart icon.",
+  "frontend/src/components/marketing/DashboardSection.tsx": "Dashboard section with five tabs (Panels, Payment, Profile Changer, Support, Status) using the updated Discord invite URL in Support tab links.",
+  "frontend/src/utils/paymentProof.ts": "Utility function building WhatsApp payment proof link with optional panel name parameter for contextual messages.",
+  "frontend/src/components/marketing/PaymentPanel.tsx": "Payment panel displaying UPI ID with copy-to-clipboard functionality, payment instructions, and WhatsApp/Discord confirmation buttons; accepts optional panelName prop for contextual payment proof messages.",
+  "frontend/src/components/marketing/SectionNavigation.tsx": "Premium cyberpunk-styled navigation component with icons for each major section, active state indicators with animated gradient underlines, and responsive mobile/desktop layouts.",
+  "frontend/src/config/payment.ts": "Payment configuration exporting the UPI ID constant (9352000693@axl) for consistent reuse across payment UI."
+}

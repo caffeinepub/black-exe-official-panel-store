@@ -1,0 +1,77 @@
+{
+  "kind": "build_request",
+  "title": "Switch payment from QR to copyable UPI ID and update Discord invite link",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-22",
+      "text": "Update the configured Discord invite URL constant to exactly \"https://discord.gg/black-exe\" and ensure all Discord links across the site (Contact section, Dashboard Support, Payment panel) use this constant (no hardcoded or outdated Discord URLs).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-7"
+        ],
+        "quotes": [
+          "CHANGE DISCORD LINK INTO https://discord.gg/black-exe"
+        ]
+      },
+      "acceptanceCriteria": [
+        "`frontend/src/config/social.ts` exports `DISCORD_INVITE_URL` as exactly `https://discord.gg/black-exe`.",
+        "All UI locations that link to Discord (ContactSection, DashboardSection Support tab, PaymentPanel) navigate to `https://discord.gg/black-exe`.",
+        "No remaining occurrences of the old Discord URL (e.g., `https://discord.gg/blackexe`) are used for navigation."
+      ]
+    },
+    {
+      "id": "REQ-23",
+      "text": "Remove the QR-code image payment UI from the Dashboard Payment experience and replace it with a UPI-ID-based payment UI that displays the UPI ID \"9352000693@axl\" and provides a clear copy-to-clipboard control. All user-facing text in this Payment UI must be in English.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-7"
+        ],
+        "quotes": [
+          "REMOVE QR PHOTO AND PUT UPI ID 9352000693@axl and make it copy able"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The Payment panel no longer renders any QR image (no `<img>` with QR assets, no 'Tap to enlarge', no 'Scan to Pay' QR instructions).",
+        "The Payment panel displays the exact UPI ID text `9352000693@axl` prominently inside the existing cyberpunk/glass UI styling.",
+        "A copy-to-clipboard control is present and copies `9352000693@axl` to the clipboard.",
+        "After copying, the UI provides a visible confirmation state in English (e.g., 'Copied' / 'UPI ID copied')."
+      ]
+    },
+    {
+      "id": "REQ-24",
+      "text": "Change the panel \"BUY NOW\" interaction so that when a user clicks BUY NOW (or clicks a panel card), the app shows the UPI payment details (UPI ID and copy action) and provides WhatsApp/Discord options to confirm payment—without immediately opening WhatsApp for purchase. The confirmation options must remain available via buttons/links in the payment view.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-7"
+        ],
+        "quotes": [
+          "JB wo buy pa click kra aga upi id aye or pay conform ka lia Whatsapp ha discord aye"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Clicking a panel card or its \"BUY NOW\" button opens an in-app payment step that shows the UPI ID `9352000693@axl` with copy-to-clipboard and the payment confirmation buttons (WhatsApp and Discord).",
+        "The prior behavior of instantly opening WhatsApp on panel click/BUY NOW is removed for this interaction.",
+        "The WhatsApp confirmation link still uses the existing WhatsApp number constant `+923137863480` and remains URL-encoded.",
+        "If a panel name is available from the clicked card, the WhatsApp payment-proof message includes the panel name (using the existing `buildPaymentProofWhatsAppLink(panelName?)` capability)."
+      ]
+    }
+  ],
+  "constraints": [
+    "Frontend immutable paths must not be edited: `frontend/src/hooks/useInternetIdentity.ts`, `frontend/src/hooks/useInternetIdentity.tsx`, `frontend/src/hooks/useActor.ts`, `frontend/src/main.tsx`, and anything under `frontend/src/components/ui`.",
+    "Keep the backend as-is (single Motoko actor remains empty unless strictly necessary); this change should be frontend-only.",
+    "Use English for all new/updated user-facing text in the modified payment/buy flow UI."
+  ],
+  "nonGoals": [
+    "Do not implement actual payment verification or automatic payment status checking.",
+    "Do not change the WhatsApp number (+923137863480).",
+    "Do not add new backend storage, admin panels, or order management."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

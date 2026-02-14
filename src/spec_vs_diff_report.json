@@ -1,42 +1,51 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-13T18:37:20.256Z",
-  "summary": "The diff updates the Discord invite URL constant, replaces the QR-based payment UI with a UPI ID + copy-to-clipboard flow, and changes the BUY NOW interaction to open an in-app payment view (modal) instead of immediately opening WhatsApp. Some acceptance criteria about ensuring *all* Discord links use the constant and that no old Discord URLs remain cannot be fully verified from the provided truncated diff summary.",
+  "generatedAt": "2026-02-14T16:43:45.604Z",
+  "summary": "Diff implements a premium dark cyberpunk UI refresh with updated logo/banner references, improved typography/contrast, and broader glass/neon styling across sections. One key uncertainty is whether the actual new image assets were added under the required public path (no new files shown). Diff also introduces some UX behaviors (search/filter + localStorage persistence/reset) not explicitly requested.",
   "missing_requirements": [
     {
-      "id": "REQ-22",
-      "requirement": "Ensure all Discord links across the site (Contact section, Dashboard Support, Payment panel) use the DISCORD_INVITE_URL constant and that no old Discord URL occurrences remain for navigation.",
-      "reason": "While the constant is updated in config and some components import it, the diff summary does not provide enough concrete code evidence for all required UI link locations (ContactSection, Dashboard Support tab, and PaymentPanel) nor proof that no old Discord URLs remain anywhere.",
+      "id": "REQ-43",
+      "requirement": "Replace the current site logo and banner with new premium versions and update the UI to use the new asset filenames; all asset references point to files under frontend/public/assets/generated and load correctly (no broken images).",
+      "reason": "The code references the new premium asset filenames, but the diff shows no added/changed files under frontend/public/assets/generated, so the actual asset replacement cannot be verified from the provided diff summary.",
       "evidence": [
-        "frontend/src/config/social.ts",
-        "frontend/src/components/marketing/DashboardSection.tsx (truncated)",
-        "frontend/src/components/marketing/PaymentPanel.tsx (truncated)",
-        "frontend-file-summaries.txt (mentions ContactSection using updated URL but no code shown)"
-      ]
-    },
-    {
-      "id": "REQ-24",
-      "requirement": "Clicking BUY NOW or a panel card opens an in-app payment step showing UPI details with copy-to-clipboard and WhatsApp/Discord confirmation options (buttons/links) in the payment view.",
-      "reason": "The modal payment step and UPI copy control are evidenced, but the truncated PaymentPanel snippet does not show the WhatsApp/Discord confirmation buttons/links implementation; it is only asserted in the file summaries.",
-      "evidence": [
-        "frontend/src/components/marketing/PanelsSection.tsx",
-        "frontend/src/components/marketing/PaymentPanel.tsx (truncated)",
-        "frontend-file-summaries.txt (states WhatsApp/Discord confirmation buttons exist, but code not shown)"
+        "frontend/src/components/marketing/SiteHeader.tsx",
+        "frontend/src/components/marketing/HeroSection.tsx"
       ]
     }
   ],
-  "hallucinated_features": [],
-  "confidence": 0.64,
+  "hallucinated_features": [
+    {
+      "description": "Persisting last selected panel/duration in localStorage and adding a reset that clears both keys.",
+      "reason": "The BuildRequest focuses on UI refresh/readability/assets/theme consistency and explicitly preserving the purchase flow behavior; persistence/reset behavior is not requested in the requirements/AC.",
+      "evidence": [
+        "frontend/src/components/marketing/PanelsSection.tsx",
+        "frontend/src/components/marketing/PaymentPanel.tsx"
+      ]
+    },
+    {
+      "description": "Adding panels search and duration filtering controls in the Panels section.",
+      "reason": "Search/filter UI is not part of REQ-41..REQ-44 and is not mentioned as a requirement; it is an unrequested functional enhancement.",
+      "evidence": [
+        "frontend/src/components/marketing/PanelsSection.tsx"
+      ]
+    }
+  ],
+  "confidence": 0.62,
   "changed_files": [
     "frontend-file-summaries.txt",
+    "frontend/src/components/marketing/ContactSection.tsx",
     "frontend/src/components/marketing/DashboardSection.tsx",
+    "frontend/src/components/marketing/HeroSection.tsx",
     "frontend/src/components/marketing/PanelCard.tsx",
     "frontend/src/components/marketing/PanelsSection.tsx",
     "frontend/src/components/marketing/PaymentPanel.tsx",
-    "frontend/src/config/payment.ts",
-    "frontend/src/config/social.ts",
-    "frontend/src/utils/paymentProof.ts",
+    "frontend/src/components/marketing/PricingTableSection.tsx",
+    "frontend/src/components/marketing/SectionNavigation.tsx",
+    "frontend/src/components/marketing/SiteFooter.tsx",
+    "frontend/src/components/marketing/SiteHeader.tsx",
+    "frontend/src/index.css",
+    "frontend/tailwind.config.js",
     "project_state.json"
   ]
 }

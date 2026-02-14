@@ -1,11 +1,12 @@
 # Specification
 
 ## Summary
-**Goal:** Replace the QR-based payment flow with a copyable UPI ID payment step, and standardize all Discord links to the updated invite URL.
+**Goal:** Refresh the frontend with a premium dark cyberpunk UI, improve text readability across the site, and replace the hero/banner and logo assets without breaking existing flows.
 
 **Planned changes:**
-- Set `DISCORD_INVITE_URL` to `https://discord.gg/black-exe` and update all Discord navigation points (Contact section, Dashboard Support, Payment panel) to use this constant (no hardcoded URLs).
-- Remove the QR-code payment UI from the Dashboard Payment panel and replace it with an English-only UPI payment UI showing `9352000693@axl` plus a copy-to-clipboard action and “copied” confirmation.
-- Change the “BUY NOW” / panel-card click flow to open an in-app payment step (showing UPI + copy) and present WhatsApp + Discord confirmation options, without auto-opening WhatsApp.
+- Redesign UI styling across Header, Section Navigation, Hero, Dashboard, Panels, Pricing Table, Contact, and Payment modal to use a cohesive darker cyberpunk palette (dark black/dark gray/dark blue) with consistent spacing and typography.
+- Improve site-wide readability by adjusting contrast, font sizing, line-height, and overlays where text sits on images/glass panels (including hero text over the banner).
+- Replace the current logo and hero banner with new premium versions and update frontend references to the new asset filenames under `frontend/public/assets/generated`.
+- Audit and remove/resolve conflicting or unused global theme styling so the app renders consistently in a dark-only theme (no accidental light-theme tokens).
 
-**User-visible outcome:** Users clicking “BUY NOW” see a payment screen with a copyable UPI ID and buttons to confirm via WhatsApp or Discord, and all Discord links across the site go to `https://discord.gg/black-exe`.
+**User-visible outcome:** The site appears consistently darker and more premium, text is clearly readable across all sections (including the hero), and the header logo + hero banner are updated—while the existing purchase flow and section navigation continue to work as before.

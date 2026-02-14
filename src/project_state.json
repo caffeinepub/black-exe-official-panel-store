@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 13,
-  "summary": "Switch the payment experience from QR-based to UPI-ID-based: remove the QR image, show a copyable UPI ID on buy/payment interaction, and update Discord invite link to https://discord.gg/black-exe while keeping WhatsApp/Discord payment confirmation flow.",
+  "projectStateVersion": 23,
+  "summary": "Switch the payment experience from QR-based to UPI-ID-based, enhance the BUY flow with a duration (days) selection UI and a more premium look, then show copyable UPI ID and WhatsApp/Discord payment confirmation options; update Discord invite link to https://discord.gg/black-exe; remove the Dark/Light mode feature and keep the entire UI in a dark-only palette (dark black/dark gray/dark blue) across all sections as part of the premium redesign.",
   "architectural_notes": [
     "External purchase flow via WhatsApp deep-link to +923137863480 with prefilled message including selected panel name.",
     "Site visual direction: fully dark cyberpunk/hacker UI with neon blue/purple glow, glassmorphism panels, and hover glow animations.",
@@ -10,14 +10,18 @@
     "Dashboard/section content should remain collapsed by default and only reveal/activate on button click; avoid showing all subsections just by scrolling; maintain premium UI styling.",
     "Discord invite link constant should be set to: https://discord.gg/black-exe and used everywhere (Contact + Dashboard Support/Payment).",
     "Payment flow change: remove QR image-based payment and use UPI ID 9352000693@axl instead, with a copy-to-clipboard control.",
-    "On BUY NOW (or in-dashboard Payment), show UPI ID first and provide WhatsApp/Discord actions for payment confirmation/proof submission."
+    "On BUY NOW (or in-dashboard Payment), show UPI ID first and provide WhatsApp/Discord actions for payment confirmation/proof submission.",
+    "Enhance panel BUY interaction to include an in-UI duration selection step (buttons) before showing UPI payment details and confirmation actions; keep styling premium and consistent with the cyberpunk/glass UI.",
+    "Theme direction change: remove Dark/Light mode support; keep a single dark-only palette using dark black/dark gray/dark blue across the entire UI."
   ],
   "known_issues": [
     "Dashboard content currently appears while scrolling instead of being activated only on button click (should be collapsed/toggled).",
     "Payment currently uses QR image(s); must be removed and replaced with copyable UPI ID 9352000693@axl.",
-    "Discord invite link must be updated to https://discord.gg/black-exe."
+    "Discord invite link must be updated to https://discord.gg/black-exe.",
+    "Some on-page text is not readable/visible due to current color/contrast choices; needs contrast/typography fixes across the UI."
   ],
   "isFixRequest": true,
+  "imageRequirements": "## Edit Images\n- Premium cyberpunk emblem-style logo with sharper details, transparent background (black-exe-logo-transparent.dim_1024x1024.png > black-exe-logo-premium-transparent.dim_1024x1024.png)\n- Premium wide cyberpunk banner background with darker, cleaner composition and safe text area for readability (black-exe-banner.dim_1920x720.png > black-exe-banner-premium.dim_1920x720.png)",
   "existing_features": [
     {
       "id": "feature-create-a-single-page-responsive-marketing-website-for-black-exe-official-panel-store-owner-name-black-exe-with-a-fully-dark-cyberpunk-hacker-ui-style-dark-black-background-neon-blue-purple-glow-accents-bold-futuristic-gaming-typography-glassmorphism-panels-blurred-translucent-cards-and-hover-glow-animations-on-cards-and-buttons",
@@ -210,6 +214,166 @@
         "REQ-24"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-when-a-user-clicks-a-panel-card-or-the-buy-now-button-show-a-duration-selection-ui-as-buttons-before-proceeding-with-the-payment-confirmation-view-the-duration-options-must-match-the-durations-already-defined-for-the-selected-panel-e-g-1-day-2-days-7-days-1-month-permanent",
+      "title": "When a user clicks a panel card or the “BUY NOW” button, show a duration selection UI (as buttons) before proceeding with the payment/confirmation view. The duration options must match the durations already defined for the selected panel (e.g., “1 DAY”, “2 DAYS”, “7 DAYS”, “1 MONTH”, “PERMANENT”).",
+      "reqIds": [
+        "REQ-25"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-paymentpanel-to-support-the-duration-first-purchase-flow-1-select-duration-2-show-copyable-upi-id-3-provide-whatsapp-and-discord-buttons-to-confirm-payment-all-user-facing-text-introduced-or-changed-for-this-flow-must-be-in-english-and-the-overall-styling-must-be-improved-to-look-more-premium-while-maintaining-the-existing-cyberpunk-glassmorphism-theme",
+      "title": "Update the PaymentPanel to support the duration-first purchase flow: (1) select duration, (2) show copyable UPI ID, (3) provide WhatsApp and Discord buttons to confirm payment. All user-facing text introduced or changed for this flow must be in English and the overall styling must be improved to look more premium while maintaining the existing cyberpunk/glassmorphism theme.",
+      "reqIds": [
+        "REQ-26"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-include-the-selected-duration-and-if-available-the-selected-price-amount-in-the-prefilled-whatsapp-payment-proof-message-generated-for-the-payment-confirmation-button-while-keeping-proper-url-encoding-and-continuing-to-use-the-configured-whatsapp-number-constant",
+      "title": "Include the selected duration (and, if available, the selected price amount) in the prefilled WhatsApp payment-proof message generated for the payment confirmation button, while keeping proper URL encoding and continuing to use the configured WhatsApp number constant.",
+      "reqIds": [
+        "REQ-27"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-dark-light-mode-toggle-control-that-allows-the-user-to-switch-the-entire-site-between-dark-mode-and-light-mode-without-breaking-existing-section-navigation-or-layouts",
+      "title": "Add a Dark/Light mode toggle control that allows the user to switch the entire site between dark mode and light mode without breaking existing section navigation or layouts.",
+      "reqIds": [
+        "REQ-28"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-complete-light-theme-alongside-the-existing-dark-theme-by-defining-light-mode-design-tokens-colors-borders-surfaces-text-and-updating-the-app-to-use-theme-aware-tokens-instead-of-hard-coded-black-white-backgrounds-where-applicable",
+      "title": "Implement a complete light theme alongside the existing dark theme by defining light-mode design tokens (colors, borders, surfaces, text) and updating the app to use theme-aware tokens instead of hard-coded black/white backgrounds where applicable.",
+      "reqIds": [
+        "REQ-29"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-overhaul-the-entire-frontend-ui-to-a-more-premium-design-while-preserving-the-existing-cyberpunk-glassmorphism-identity-and-keeping-all-current-features-and-flows-intact-section-navigation-dashboard-tabs-panel-selection-duration-selection-upi-copy-whatsapp-discord-confirmation",
+      "title": "Overhaul the entire frontend UI to a more premium design while preserving the existing cyberpunk/glassmorphism identity and keeping all current features and flows intact (section navigation, dashboard tabs, panel selection → duration selection → UPI copy → WhatsApp/Discord confirmation).",
+      "reqIds": [
+        "REQ-30"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-app-s-theme-palettes-so-that-dark-mode-uses-a-black-base-with-blue-and-red-accents-and-light-mode-uses-a-white-base-with-gray-and-light-black-tones-applied-consistently-across-the-entire-site-header-section-navigation-hero-dashboard-panels-pricing-table-contact-payment-modal-panel",
+      "title": "Update the app’s theme palettes so that Dark Mode uses a black base with blue and red accents, and Light Mode uses a white base with gray and light-black tones, applied consistently across the entire site (header, section navigation, hero, dashboard, panels, pricing table, contact, payment modal/panel).",
+      "reqIds": [
+        "REQ-31"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-refresh-the-global-premium-cyberpunk-styling-utilities-to-match-the-new-palette-glass-surfaces-neon-glow-hover-glow-focus-rings-gradients-and-ensure-they-are-theme-aware-dark-vs-light",
+      "title": "Refresh the global premium cyberpunk styling utilities to match the new palette (glass surfaces, neon glow, hover glow, focus rings, gradients) and ensure they are theme-aware (dark vs light).",
+      "reqIds": [
+        "REQ-32"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-redesign-the-core-layout-components-siteheader-sectionnavigation-to-look-more-premium-while-keeping-the-existing-section-switching-behavior-intact-and-responsive-on-mobile",
+      "title": "Redesign the core layout components (SiteHeader + SectionNavigation) to look more premium while keeping the existing section-switching behavior intact and responsive on mobile.",
+      "reqIds": [
+        "REQ-33"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-redesign-dashboard-ui-tab-cards-active-content-panels-to-match-the-new-premium-theme-with-improved-active-hover-states-and-clearer-visual-grouping-for-content-blocks",
+      "title": "Redesign Dashboard UI (tab cards + active content panels) to match the new premium theme, with improved active/hover states and clearer visual grouping for content blocks.",
+      "reqIds": [
+        "REQ-34"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-new-user-facing-function-a-panels-search-quick-filter-experience-that-lets-users-find-panels-by-name-and-optionally-filter-by-duration-availability-without-changing-any-prices-or-panel-definitions",
+      "title": "Add a new user-facing function: a Panels search + quick filter experience that lets users find panels by name and optionally filter by duration availability, without changing any prices or panel definitions.",
+      "reqIds": [
+        "REQ-35"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-new-user-facing-function-persist-the-last-selected-panel-duration-in-the-purchase-flow-so-that-if-the-user-reopens-the-payment-panel-modal-the-previous-selection-is-restored-per-device-browser",
+      "title": "Add a new user-facing function: persist the last selected panel + duration in the purchase flow so that if the user reopens the payment panel/modal, the previous selection is restored (per device/browser).",
+      "reqIds": [
+        "REQ-36"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-the-light-dark-mode-feature-so-the-site-always-renders-in-a-single-dark-only-theme-dark-black-dark-gray-dark-blue",
+      "title": "Remove the Light/Dark mode feature so the site always renders in a single dark-only theme (dark black, dark gray, dark blue).",
+      "reqIds": [
+        "REQ-37"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-header-to-remove-the-theme-toggle-button-and-any-theme-toggle-related-user-facing-strings",
+      "title": "Update the header to remove the theme toggle button and any theme-toggle related user-facing strings.",
+      "reqIds": [
+        "REQ-38"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-make-the-html-boot-logic-always-start-in-dark-only-mode-and-remove-any-pre-render-logic-that-selects-light-mode-based-on-system-preference",
+      "title": "Make the HTML boot logic always start in dark-only mode and remove any pre-render logic that selects light mode based on system preference.",
+      "reqIds": [
+        "REQ-39"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-refactor-global-theme-tokens-and-utilities-to-be-dark-only-by-removing-the-light-theme-variable-set-and-eliminating-dark-scoped-overrides-while-keeping-the-cyberpunk-glass-neon-styling-in-a-dark-black-gray-dark-blue-palette",
+      "title": "Refactor global theme tokens and utilities to be dark-only by removing the light theme variable set and eliminating `.dark`-scoped overrides, while keeping the cyberpunk/glass/neon styling in a dark black/gray/dark blue palette.",
+      "reqIds": [
+        "REQ-40"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-redesign-the-site-ui-to-look-more-premium-with-a-darker-cleaner-cyberpunk-palette-dark-black-dark-gray-dark-blue-and-consistent-spacing-typography-across-all-sections-header-section-navigation-hero-dashboard-panels-pricing-table-contact-payment-modal",
+      "title": "Redesign the site UI to look more premium with a darker, cleaner cyberpunk palette (dark black/dark gray/dark blue) and consistent spacing/typography across all sections (Header, Section Navigation, Hero, Dashboard, Panels, Pricing Table, Contact, Payment modal).",
+      "reqIds": [
+        "REQ-41"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-fix-site-wide-text-readability-visibility-issues-by-improving-contrast-font-sizing-line-height-and-background-overlays-wherever-text-is-hard-to-see-especially-over-images-and-glass-panels",
+      "title": "Fix site-wide text readability/visibility issues by improving contrast, font sizing, line-height, and background overlays wherever text is hard to see (especially over images and glass panels).",
+      "reqIds": [
+        "REQ-42"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-replace-the-current-site-logo-and-banner-with-new-premium-versions-and-update-the-ui-to-use-the-new-asset-filenames-do-not-reduce-hero-text-readability-when-applying-the-new-banner",
+      "title": "Replace the current site logo and banner with new premium versions and update the UI to use the new asset filenames (do not reduce hero text readability when applying the new banner).",
+      "reqIds": [
+        "REQ-43"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-audit-and-correct-any-conflicting-unused-global-theme-styling-so-the-app-consistently-renders-in-the-intended-dark-only-theme-without-accidental-light-theme-tokens-affecting-contrast",
+      "title": "Audit and correct any conflicting/unused global theme styling so the app consistently renders in the intended dark-only theme without accidental light-theme tokens affecting contrast.",
+      "reqIds": [
+        "REQ-44"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -306,6 +470,24 @@
     {
       "id": "AR-16",
       "summary": "Make UPI ID 9352000693@axl copyable (copy-to-clipboard UI) and show it when user clicks BUY (then provide WhatsApp/Discord buttons for payment confirmation/proof)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-17",
+      "summary": "In the panel BUY flow, add duration selection (e.g., 1 day/2 days/7 days/1 month/permanent) as buttons and improve the UI so users choose how long to buy before proceeding to payment/confirmation",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-19",
+      "summary": "Full premium UI overhaul/redesign across the entire site (update all sections/UI elements to a more premium look)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-20",
+      "summary": "Replace/update the current logo and banner with new premium versions and integrate them so they fit the dark cyberpunk UI without reducing text readability",
       "reqIds": [],
       "status": "pending"
     }

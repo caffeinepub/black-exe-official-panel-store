@@ -2,51 +2,21 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-update-the-configured-discord-invite-url-constant-to-exactly-https-discord-gg-black-exe-and-ensure-all-discord-links-across-the-site-contact-section-dashboard-support-payment-panel-use-this-constant-no-hardcoded-or-outdated-discord-urls",
-      "featureTitle": "Update the configured Discord invite URL constant to exactly \"https://discord.gg/black-exe\" and ensure all Discord links across the site (Contact section, Dashboard Support, Payment panel) use this constant (no hardcoded or outdated Discord URLs).",
+      "featureId": "feature-redesign-the-site-ui-to-look-more-premium-with-a-darker-cleaner-cyberpunk-palette-dark-black-dark-gray-dark-blue-and-consistent-spacing-typography-across-all-sections-header-section-navigation-hero-dashboard-panels-pricing-table-contact-payment-modal",
+      "featureTitle": "Redesign the site UI to look more premium with a darker, cleaner cyberpunk palette (dark black/dark gray/dark blue) and consistent spacing/typography across all sections (Header, Section Navigation, Hero, Dashboard, Panels, Pricing Table, Contact, Payment modal).",
       "files": [
+        "frontend/src/components/marketing/ContactSection.tsx",
         "frontend/src/components/marketing/DashboardSection.tsx",
-        "frontend/src/components/marketing/PaymentPanel.tsx",
-        "frontend/src/config/social.ts"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-22"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-remove-the-qr-code-image-payment-ui-from-the-dashboard-payment-experience-and-replace-it-with-a-upi-id-based-payment-ui-that-displays-the-upi-id-9352000693-axl-and-provides-a-clear-copy-to-clipboard-control-all-user-facing-text-in-this-payment-ui-must-be-in-english",
-      "featureTitle": "Remove the QR-code image payment UI from the Dashboard Payment experience and replace it with a UPI-ID-based payment UI that displays the UPI ID \"9352000693@axl\" and provides a clear copy-to-clipboard control. All user-facing text in this Payment UI must be in English.",
-      "files": [
-        "frontend/src/components/marketing/PaymentPanel.tsx",
-        "frontend/src/config/payment.ts"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-23"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-change-the-panel-buy-now-interaction-so-that-when-a-user-clicks-buy-now-or-clicks-a-panel-card-the-app-shows-the-upi-payment-details-upi-id-and-copy-action-and-provides-whatsapp-discord-options-to-confirm-payment-without-immediately-opening-whatsapp-for-purchase-the-confirmation-options-must-remain-available-via-buttons-links-in-the-payment-view",
-      "featureTitle": "Change the panel \"BUY NOW\" interaction so that when a user clicks BUY NOW (or clicks a panel card), the app shows the UPI payment details (UPI ID and copy action) and provides WhatsApp/Discord options to confirm payment—without immediately opening WhatsApp for purchase. The confirmation options must remain available via buttons/links in the payment view.",
-      "files": [
+        "frontend/src/components/marketing/HeroSection.tsx",
         "frontend/src/components/marketing/PanelCard.tsx",
         "frontend/src/components/marketing/PanelsSection.tsx",
-        "frontend/src/components/marketing/PaymentPanel.tsx"
+        "frontend/src/components/marketing/PaymentPanel.tsx",
+        "frontend/src/components/marketing/PricingTableSection.tsx",
+        "frontend/src/components/marketing/SectionNavigation.tsx",
+        "frontend/src/components/marketing/SiteFooter.tsx",
+        "frontend/src/components/marketing/SiteHeader.tsx",
+        "frontend/src/index.css",
+        "frontend/tailwind.config.js"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -56,7 +26,69 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-24"
+        "REQ-41"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-fix-site-wide-text-readability-visibility-issues-by-improving-contrast-font-sizing-line-height-and-background-overlays-wherever-text-is-hard-to-see-especially-over-images-and-glass-panels",
+      "featureTitle": "Fix site-wide text readability/visibility issues by improving contrast, font sizing, line-height, and background overlays wherever text is hard to see (especially over images and glass panels).",
+      "files": [
+        "frontend/src/components/marketing/ContactSection.tsx",
+        "frontend/src/components/marketing/DashboardSection.tsx",
+        "frontend/src/components/marketing/HeroSection.tsx",
+        "frontend/src/components/marketing/PanelCard.tsx",
+        "frontend/src/components/marketing/PanelsSection.tsx",
+        "frontend/src/components/marketing/PaymentPanel.tsx",
+        "frontend/src/components/marketing/PricingTableSection.tsx",
+        "frontend/src/index.css"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-42"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-replace-the-current-site-logo-and-banner-with-new-premium-versions-and-update-the-ui-to-use-the-new-asset-filenames-do-not-reduce-hero-text-readability-when-applying-the-new-banner",
+      "featureTitle": "Replace the current site logo and banner with new premium versions and update the UI to use the new asset filenames (do not reduce hero text readability when applying the new banner).",
+      "files": [
+        "frontend/src/components/marketing/HeroSection.tsx",
+        "frontend/src/components/marketing/SiteHeader.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-43"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-audit-and-correct-any-conflicting-unused-global-theme-styling-so-the-app-consistently-renders-in-the-intended-dark-only-theme-without-accidental-light-theme-tokens-affecting-contrast",
+      "featureTitle": "Audit and correct any conflicting/unused global theme styling so the app consistently renders in the intended dark-only theme without accidental light-theme tokens affecting contrast.",
+      "files": [
+        "frontend/src/index.css"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-44"
       ],
       "confidence": "high"
     }

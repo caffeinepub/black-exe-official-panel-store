@@ -1,85 +1,193 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Replace QR payment with copyable UPI ID flow and standardize Discord invite URL usage",
+  "title": "Premium dark cyberpunk UI refresh + readability fixes + updated logo/banner assets",
   "requirements": [
     {
-      "id": "REQ-22",
-      "summary": "Update Discord invite URL constant and ensure all Discord links use the shared constant",
+      "id": "REQ-41",
+      "summary": "Apply a cohesive premium dark cyberpunk palette and consistent spacing/typography across header, section navigation, hero, dashboard, panels, pricing table, contact, and payment modal.",
       "acceptanceCriteria": [
-        "`frontend/src/config/social.ts` exports `DISCORD_INVITE_URL` as exactly `https://discord.gg/black-exe`.",
-        "All UI locations that link to Discord (ContactSection, DashboardSection Support tab, PaymentPanel) navigate to `https://discord.gg/black-exe`.",
-        "No remaining occurrences of the old Discord URL (e.g., `https://discord.gg/blackexe`) are used for navigation."
+        "All primary UI surfaces (page background, glass panels, modals, navigation) use a cohesive dark palette with consistent border/glow treatment (no mismatched grays/blacks between sections).",
+        "Buttons/inputs/tabs have consistent premium hover + focus states aligned with the existing cyberpunk/glass style.",
+        "No existing flows are removed or broken (section switching, dashboard tabs, panel selection → duration selection → UPI copy → WhatsApp/Discord confirmation)."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/config/social.ts",
+          "path": "frontend/src/index.css",
           "operation": "modify",
-          "description": "Change `DISCORD_INVITE_URL` to exactly `https://discord.gg/black-exe` and keep it as the single source of truth for Discord navigation."
+          "description": "Refine the dark-only palette tokens and shared cyberpunk/glass utilities (panel, nav, modal, table, inputs, buttons) to ensure consistent surface/background/border/glow treatment and typography scale across all sections."
         },
         {
-          "path": "frontend/src/components/marketing/ContactSection.tsx",
+          "path": "frontend/tailwind.config.js",
           "operation": "modify",
-          "description": "Verify the Discord contact button uses `DISCORD_INVITE_URL` from `frontend/src/config/social.ts` (no hardcoded Discord URL)."
+          "description": "Adjust/extend Tailwind theme mappings (colors, shadows, radii, animations) to align with the refined premium dark palette and improve consistency across components."
+        },
+        {
+          "path": "frontend/src/components/marketing/SiteHeader.tsx",
+          "operation": "modify",
+          "description": "Update header layout spacing, typography hierarchy, and surface styling to match the premium dark/glass system while preserving existing structure and behavior."
+        },
+        {
+          "path": "frontend/src/components/marketing/SectionNavigation.tsx",
+          "operation": "modify",
+          "description": "Align section navigation button sizing, spacing, and active/hover/focus states with the premium dark theme so nav appearance is consistent with other interactive surfaces."
+        },
+        {
+          "path": "frontend/src/components/marketing/HeroSection.tsx",
+          "operation": "modify",
+          "description": "Tune hero spacing and typography scale (mobile/tablet/desktop) to better match the refreshed premium look without altering section placement or navigation behavior."
         },
         {
           "path": "frontend/src/components/marketing/DashboardSection.tsx",
           "operation": "modify",
-          "description": "Verify the Support tab Discord link uses `DISCORD_INVITE_URL` from `frontend/src/config/social.ts` (no hardcoded Discord URL)."
-        },
-        {
-          "path": "frontend/src/components/marketing/PaymentPanel.tsx",
-          "operation": "modify",
-          "description": "Verify the payment confirmation Discord link uses `DISCORD_INVITE_URL` from `frontend/src/config/social.ts` (no hardcoded Discord URL)."
-        }
-      ]
-    },
-    {
-      "id": "REQ-23",
-      "summary": "Replace QR-based Payment panel with an English-only UPI ID display and copy-to-clipboard control",
-      "acceptanceCriteria": [
-        "The Payment panel no longer renders any QR image (no `<img>` with QR assets, no 'Tap to enlarge', no 'Scan to Pay' QR instructions).",
-        "The Payment panel displays the exact UPI ID text `9352000693@axl` prominently inside the existing cyberpunk/glass UI styling.",
-        "A copy-to-clipboard control is present and copies `9352000693@axl` to the clipboard.",
-        "After copying, the UI provides a visible confirmation state in English (e.g., 'Copied' / 'UPI ID copied')."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/config/payment.ts",
-          "operation": "create",
-          "description": "Create a small payment config exporting the UPI ID constant `9352000693@axl` so it can be reused consistently across Payment UI and the BUY NOW flow."
-        },
-        {
-          "path": "frontend/src/components/marketing/PaymentPanel.tsx",
-          "operation": "modify",
-          "description": "Remove the entire QR image section and QR-specific instructions; replace with a UPI-ID-based UI that prominently shows `9352000693@axl`, includes a copy-to-clipboard control, and shows an English confirmation state after copying. Keep the existing cyberpunk/glass styling and retain the WhatsApp/Discord proof actions as buttons/links."
-        }
-      ]
-    },
-    {
-      "id": "REQ-24",
-      "summary": "Change BUY NOW/panel-card click to open an in-app payment step with UPI details and WhatsApp/Discord confirmation options (no instant WhatsApp open)",
-      "acceptanceCriteria": [
-        "Clicking a panel card or its \"BUY NOW\" button opens an in-app payment step that shows the UPI ID `9352000693@axl` with copy-to-clipboard and the payment confirmation buttons (WhatsApp and Discord).",
-        "The prior behavior of instantly opening WhatsApp on panel click/BUY NOW is removed for this interaction.",
-        "The WhatsApp confirmation link still uses the existing WhatsApp number constant `+923137863480` and remains URL-encoded.",
-        "If a panel name is available from the clicked card, the WhatsApp payment-proof message includes the panel name (using the existing `buildPaymentProofWhatsAppLink(panelName?)` capability)."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/components/marketing/PanelCard.tsx",
-          "operation": "modify",
-          "description": "Replace the current behavior that opens WhatsApp on card click/BUY NOW with a callback-driven interaction (e.g., `onBuy(panelName)`), so the parent can show an in-app payment step instead of immediately opening WhatsApp. Preserve keyboard accessibility behavior."
+          "description": "Standardize dashboard tab/card surface styling and typography to match the refreshed dark/glass system while keeping all tab behaviors unchanged."
         },
         {
           "path": "frontend/src/components/marketing/PanelsSection.tsx",
           "operation": "modify",
-          "description": "Wire the new panel purchase interaction by tracking the selected panel name and conditionally rendering the in-app payment step (reuse `PaymentPanel` with a `panelName` prop). Ensure the payment view contains WhatsApp + Discord confirmation actions that remain available as buttons/links."
+          "description": "Use existing shadcn-ui components (Button/Input/Select) styling hooks to unify control sizing, spacing, and states with the premium theme; preserve existing panel selection and payment modal behavior. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/marketing/PanelCard.tsx",
+          "operation": "modify",
+          "description": "Update panel card surface styling, spacing, and button states to match the premium theme while keeping panel info and buy interaction unchanged."
+        },
+        {
+          "path": "frontend/src/components/marketing/PricingTableSection.tsx",
+          "operation": "modify",
+          "description": "Refresh pricing table/card surfaces, row hover states, and typography for a more premium look while keeping the same panel list and INR prices unchanged."
+        },
+        {
+          "path": "frontend/src/components/marketing/ContactSection.tsx",
+          "operation": "modify",
+          "description": "Unify contact card surfaces, spacing, and hover/focus states with the premium dark theme while preserving WhatsApp/Discord links sourced from config."
         },
         {
           "path": "frontend/src/components/marketing/PaymentPanel.tsx",
           "operation": "modify",
-          "description": "Extend `PaymentPanel` to support an optional `panelName` input for the in-app purchase flow; when provided, use `buildPaymentProofWhatsAppLink(panelName)` for the WhatsApp confirmation action and keep the Discord action using `DISCORD_INVITE_URL`. Ensure the component only presents details/actions and never auto-opens WhatsApp."
+          "description": "Polish payment panel visual hierarchy (duration grid, summary, UPI copy, confirmation CTAs) and normalize interactive states using the existing shadcn-ui Button where applicable; keep purchase flow behavior identical. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/marketing/SiteFooter.tsx",
+          "operation": "modify",
+          "description": "Align footer surface/border/typography styling with the refreshed premium dark system for consistent end-of-page presentation."
+        }
+      ]
+    },
+    {
+      "id": "REQ-42",
+      "summary": "Fix site-wide readability issues via improved contrast, font sizing/line-height, and stronger overlays on image/glass backgrounds.",
+      "acceptanceCriteria": [
+        "Hero heading and subtext remain clearly readable over the banner image on mobile and desktop (no washed-out text, no blending into background).",
+        "All section headings, card titles, prices, and button labels are readable with strong contrast against their backgrounds in the dark theme.",
+        "No text is clipped/cropped/overlapping at common breakpoints (mobile, tablet, desktop)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Adjust global typography defaults (base font-size, line-height), muted-foreground contrast, and glass surface/background overlay utilities to improve text legibility across panels and modals."
+        },
+        {
+          "path": "frontend/src/components/marketing/HeroSection.tsx",
+          "operation": "modify",
+          "description": "Strengthen the banner overlay/gradient and tune heading/subtext sizing/line-height for mobile/desktop so text stays readable over the banner image."
+        },
+        {
+          "path": "frontend/src/components/marketing/DashboardSection.tsx",
+          "operation": "modify",
+          "description": "Improve readability of dashboard headings/body copy (contrast and line-height) and ensure no clipping/overlap at common breakpoints."
+        },
+        {
+          "path": "frontend/src/components/marketing/PanelsSection.tsx",
+          "operation": "modify",
+          "description": "Ensure search/filter controls and empty states meet contrast/readability requirements (labels, placeholders, focus rings) while continuing to use existing shadcn-ui Input/Select styling. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/marketing/PanelCard.tsx",
+          "operation": "modify",
+          "description": "Increase price/title readability on glass surfaces (contrast, spacing, line-height) without changing displayed values."
+        },
+        {
+          "path": "frontend/src/components/marketing/PricingTableSection.tsx",
+          "operation": "modify",
+          "description": "Improve table/card text contrast (headers, prices) and spacing so content remains readable and not clipped on mobile/tablet/desktop."
+        },
+        {
+          "path": "frontend/src/components/marketing/ContactSection.tsx",
+          "operation": "modify",
+          "description": "Tune contact section typography and contrast for the dark theme to ensure headings and labels remain clearly readable."
+        },
+        {
+          "path": "frontend/src/components/marketing/PaymentPanel.tsx",
+          "operation": "modify",
+          "description": "Improve readability in payment panel (duration labels, summary rows, UPI ID) and verify layout remains unclipped/scrollable in the modal at smaller heights."
+        }
+      ]
+    },
+    {
+      "id": "REQ-43",
+      "summary": "Replace site logo and hero banner with new premium assets and update all references to the new filenames while preserving hero text readability.",
+      "acceptanceCriteria": [
+        "Site header uses the new logo asset instead of the old one.",
+        "Hero section uses the new banner asset instead of the old one, with an overlay/opacity treatment that keeps the headline/subtext readable.",
+        "All asset references point to files under frontend/public/assets/generated and load correctly in preview (no broken images)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/black-exe-logo-premium-transparent.dim_1024x1024.png",
+          "operation": "create",
+          "description": "Add the generated premium logo asset file at the exact path so the header can reference it."
+        },
+        {
+          "path": "frontend/public/assets/generated/black-exe-banner-premium.dim_1920x720.png",
+          "operation": "create",
+          "description": "Add the generated premium banner asset file at the exact path so the hero can reference it."
+        },
+        {
+          "path": "frontend/src/components/marketing/SiteHeader.tsx",
+          "operation": "modify",
+          "description": "Update the header logo image source to frontend/public/assets/generated/black-exe-logo-premium-transparent.dim_1024x1024.png and ensure sizing/contrast still fits the premium dark header."
+        },
+        {
+          "path": "frontend/src/components/marketing/HeroSection.tsx",
+          "operation": "modify",
+          "description": "Update the hero banner image source to frontend/public/assets/generated/black-exe-banner-premium.dim_1920x720.png and adjust overlay/opacity treatment to maintain strong headline/subtext readability."
+        }
+      ]
+    },
+    {
+      "id": "REQ-44",
+      "summary": "Eliminate conflicting/unused global theme styling so the app consistently renders a single dark-only theme without accidental light tokens impacting contrast.",
+      "acceptanceCriteria": [
+        "There is a single, consistent source of truth for theme tokens applied to the rendered app (no accidental overrides causing inconsistent foreground/background colors).",
+        "After the change, text and surfaces match the intended dark-only palette across all sections and the payment modal."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/index.css",
+          "operation": "modify",
+          "description": "Remove or neutralize light-theme token defaults so this file cannot override the intended dark-only palette (align tokens with the dark-only system and avoid requiring a .dark class for correct contrast)."
+        },
+        {
+          "path": "frontend/src/main.tsx",
+          "operation": "modify",
+          "description": "Ensure the app imports only the intended global stylesheet(s) for the dark-only theme and does not inadvertently pull in conflicting global theme files."
+        },
+        {
+          "path": "frontend/src/hooks/useTheme.ts",
+          "operation": "modify",
+          "description": "Either implement a no-op dark-only theme hook (explicitly enforcing dark tokens) or remove unused exports to prevent future accidental light-theme wiring."
+        },
+        {
+          "path": "frontend/src/components/marketing/ThemeToggle.tsx",
+          "operation": "modify",
+          "description": "Update the placeholder ThemeToggle so it cannot introduce light-theme tokens or toggling behavior (keep dark-only behavior; optionally render nothing with a clear comment)."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Consolidate theme token definitions and document the single source of truth for dark-only palette utilities so all sections/modals consistently use the same variables."
         }
       ]
     }

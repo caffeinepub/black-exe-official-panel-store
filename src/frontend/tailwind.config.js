@@ -48,14 +48,13 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        'neon-blue': '#0096FF',
-        'neon-purple': '#9632FF',
-        'neon-cyan': '#00FFFF',
+        'neon-blue': '#6B6BFF',
+        'neon-red': '#FF3250',
       },
       fontFamily: {
         display: ['Orbitron', 'sans-serif'],
-        cyber: ['Rajdhani', 'sans-serif'],
-        body: ['Exo 2', 'sans-serif'],
+        cyber: ['Exo 2', 'sans-serif'],
+        body: ['Rajdhani', 'sans-serif'],
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -63,12 +62,14 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       boxShadow: {
-        'neon-blue': '0 0 20px rgba(0, 150, 255, 0.6), 0 0 40px rgba(0, 150, 255, 0.4)',
-        'neon-purple': '0 0 20px rgba(150, 50, 255, 0.6), 0 0 40px rgba(150, 50, 255, 0.4)',
-        'neon-cyan': '0 0 20px rgba(0, 255, 255, 0.6), 0 0 40px rgba(0, 255, 255, 0.4)',
+        'neon-blue': '0 0 35px rgba(100, 100, 255, 0.5), 0 0 70px rgba(100, 100, 255, 0.25)',
+        'neon-blue-lg': '0 0 50px rgba(100, 100, 255, 0.7), 0 0 100px rgba(100, 100, 255, 0.4)',
+        'neon-red': '0 0 35px rgba(255, 50, 80, 0.5), 0 0 70px rgba(255, 50, 80, 0.25)',
+        'neon-red-lg': '0 0 50px rgba(255, 50, 80, 0.7), 0 0 100px rgba(255, 50, 80, 0.4)',
       },
       animation: {
-        'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
+        'pulse-glow': 'pulse-glow 2.5s ease-in-out infinite',
+        'shimmer': 'shimmer 2.5s ease-in-out infinite',
       },
       keyframes: {
         'pulse-glow': {
@@ -77,8 +78,18 @@ export default {
             filter: 'brightness(1)',
           },
           '50%': { 
-            opacity: '0.8',
-            filter: 'brightness(1.2)',
+            opacity: '0.85',
+            filter: 'brightness(1.25)',
+          },
+        },
+        'shimmer': {
+          '0%, 100%': {
+            opacity: '0.7',
+            transform: 'scaleX(0.85)',
+          },
+          '50%': {
+            opacity: '1',
+            transform: 'scaleX(1)',
           },
         },
       },

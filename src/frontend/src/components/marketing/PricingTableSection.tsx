@@ -4,73 +4,83 @@ export function PricingTableSection() {
   const durations = ['1 DAY', '2 DAYS', '7 DAYS', '1 MONTH', 'PERMANENT'];
 
   return (
-    <section className="py-16 md:py-24 relative">
+    <section id="pricing-section" className="py-24 md:py-32 relative">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-5xl font-display font-black tracking-wider text-center mb-12 neon-glow-blue">
+        <h2 className="text-5xl md:text-7xl font-display font-black tracking-wider text-center mb-24 neon-glow-red leading-tight">
           PRICING TABLE
         </h2>
 
-        {/* Desktop Table */}
-        <div className="hidden lg:block glass-panel rounded-lg p-6 overflow-x-auto">
-          <table className="w-full">
-            <thead>
-              <tr className="border-b-2 border-neon-blue/50">
-                <th className="text-left py-4 px-4 font-display font-bold text-lg neon-glow-purple">
-                  PANEL
-                </th>
-                {durations.map((duration) => (
-                  <th
-                    key={duration}
-                    className="text-center py-4 px-4 font-cyber font-bold text-sm neon-glow-blue"
-                  >
-                    {duration}
+        {/* Desktop Table View */}
+        <div className="hidden lg:block overflow-x-auto">
+          <div className="glass-panel rounded-2xl p-8 card-elevated border-2 border-primary/40">
+            <table className="w-full">
+              <thead>
+                <tr className="border-b-2 border-primary/40">
+                  <th className="text-left py-6 px-6 font-display font-bold text-2xl text-primary">
+                    Panel Name
                   </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {PANELS.map((panel, idx) => (
-                <tr
-                  key={panel.id}
-                  className={`border-b border-neon-blue/20 hover:bg-neon-blue/5 transition-colors ${
-                    idx % 2 === 0 ? 'bg-black/20' : ''
-                  }`}
-                >
-                  <td className="py-4 px-4 font-display font-bold text-white">
-                    {panel.name}
-                  </td>
-                  {panel.prices.map((price) => (
-                    <td
-                      key={price.duration}
-                      className="text-center py-4 px-4 font-bold text-neon-cyan"
+                  {durations.map((duration) => (
+                    <th
+                      key={duration}
+                      className="text-center py-6 px-4 font-cyber font-bold text-lg text-accent"
                     >
-                      {price.price} INR
-                    </td>
+                      {duration}
+                    </th>
                   ))}
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {PANELS.map((panel, index) => (
+                  <tr
+                    key={panel.id}
+                    className={`
+                      border-b border-border/50 transition-all duration-300
+                      ${index % 2 === 0 ? 'bg-primary/5' : 'bg-destructive/5'}
+                      hover:bg-primary/15
+                    `}
+                  >
+                    <td className="py-6 px-6 font-cyber font-bold text-xl text-foreground">
+                      {panel.name}
+                    </td>
+                    {durations.map((duration) => {
+                      const price = panel.prices.find((p) => p.duration === duration);
+                      return (
+                        <td
+                          key={duration}
+                          className="text-center py-6 px-4 font-display font-bold text-xl text-muted-foreground"
+                        >
+                          {price ? `₹${price.price}` : '—'}
+                        </td>
+                      );
+                    })}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
 
-        {/* Mobile Cards */}
-        <div className="lg:hidden space-y-4">
+        {/* Mobile Card View */}
+        <div className="lg:hidden space-y-6">
           {PANELS.map((panel) => (
-            <div key={panel.id} className="glass-panel rounded-lg p-4">
-              <h3 className="text-xl font-display font-bold mb-4 neon-glow-purple text-center">
+            <div
+              key={panel.id}
+              className="glass-panel rounded-2xl p-7 card-elevated border-2 border-primary/40"
+            >
+              <h3 className="text-2xl font-display font-black mb-6 neon-glow-blue leading-tight">
                 {panel.name}
               </h3>
-              <div className="space-y-2">
+              <div className="space-y-4">
                 {panel.prices.map((price) => (
                   <div
                     key={price.duration}
-                    className="flex justify-between items-center py-2 px-3 rounded bg-black/40 border border-neon-blue/20"
+                    className="flex justify-between items-center p-4 glass-panel-alt rounded-xl border border-primary/30"
                   >
-                    <span className="text-sm font-cyber font-semibold text-neon-cyan">
+                    <span className="font-cyber font-bold text-lg text-accent">
                       {price.duration}
                     </span>
-                    <span className="text-base font-bold text-white">
-                      {price.price} INR
+                    <span className="font-display font-bold text-2xl text-foreground">
+                      ₹{price.price}
                     </span>
                   </div>
                 ))}

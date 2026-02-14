@@ -1,77 +1,108 @@
 {
   "kind": "build_request",
-  "title": "Switch payment from QR to copyable UPI ID and update Discord invite link",
+  "title": "Premium dark UI refresh, improve readability, and replace logo/banner assets",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-22",
-      "text": "Update the configured Discord invite URL constant to exactly \"https://discord.gg/black-exe\" and ensure all Discord links across the site (Contact section, Dashboard Support, Payment panel) use this constant (no hardcoded or outdated Discord URLs).",
+      "id": "REQ-41",
+      "text": "Redesign the site UI to look more premium with a darker, cleaner cyberpunk palette (dark black/dark gray/dark blue) and consistent spacing/typography across all sections (Header, Section Navigation, Hero, Dashboard, Panels, Pricing Table, Contact, Payment modal).",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-7"
+          "msg-3"
         ],
         "quotes": [
-          "CHANGE DISCORD LINK INTO https://discord.gg/black-exe"
+          "UI acha bnao or colour sai sa lgao sai nhi LG rha dark colour lgao apni mrzi sa premium or acha sa UI bnao ..."
         ]
       },
       "acceptanceCriteria": [
-        "`frontend/src/config/social.ts` exports `DISCORD_INVITE_URL` as exactly `https://discord.gg/black-exe`.",
-        "All UI locations that link to Discord (ContactSection, DashboardSection Support tab, PaymentPanel) navigate to `https://discord.gg/black-exe`.",
-        "No remaining occurrences of the old Discord URL (e.g., `https://discord.gg/blackexe`) are used for navigation."
+        "All primary UI surfaces (page background, glass panels, modals, navigation) use a cohesive dark palette with consistent border/glow treatment (no mismatched grays/blacks between sections).",
+        "Buttons/inputs/tabs have consistent premium hover + focus states aligned with the existing cyberpunk/glass style.",
+        "No existing flows are removed or broken (section switching, dashboard tabs, panel selection → duration selection → UPI copy → WhatsApp/Discord confirmation)."
       ]
     },
     {
-      "id": "REQ-23",
-      "text": "Remove the QR-code image payment UI from the Dashboard Payment experience and replace it with a UPI-ID-based payment UI that displays the UPI ID \"9352000693@axl\" and provides a clear copy-to-clipboard control. All user-facing text in this Payment UI must be in English.",
+      "id": "REQ-42",
+      "text": "Fix site-wide text readability/visibility issues by improving contrast, font sizing, line-height, and background overlays wherever text is hard to see (especially over images and glass panels).",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-7"
+          "msg-3"
         ],
         "quotes": [
-          "REMOVE QR PHOTO AND PUT UPI ID 9352000693@axl and make it copy able"
+          "... or Jo LIKHA ha wo dikh ni rha wo bhi sai kro sb"
         ]
       },
       "acceptanceCriteria": [
-        "The Payment panel no longer renders any QR image (no `<img>` with QR assets, no 'Tap to enlarge', no 'Scan to Pay' QR instructions).",
-        "The Payment panel displays the exact UPI ID text `9352000693@axl` prominently inside the existing cyberpunk/glass UI styling.",
-        "A copy-to-clipboard control is present and copies `9352000693@axl` to the clipboard.",
-        "After copying, the UI provides a visible confirmation state in English (e.g., 'Copied' / 'UPI ID copied')."
+        "Hero heading and subtext remain clearly readable over the banner image on mobile and desktop (no washed-out text, no blending into background).",
+        "All section headings, card titles, prices, and button labels are readable with strong contrast against their backgrounds in the dark theme.",
+        "No text is clipped/cropped/overlapping at common breakpoints (mobile, tablet, desktop)."
       ]
     },
     {
-      "id": "REQ-24",
-      "text": "Change the panel \"BUY NOW\" interaction so that when a user clicks BUY NOW (or clicks a panel card), the app shows the UPI payment details (UPI ID and copy action) and provides WhatsApp/Discord options to confirm payment—without immediately opening WhatsApp for purchase. The confirmation options must remain available via buttons/links in the payment view.",
+      "id": "REQ-43",
+      "text": "Replace the current site logo and banner with new premium versions and update the UI to use the new asset filenames (do not reduce hero text readability when applying the new banner).",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-7"
+          "msg-3"
         ],
         "quotes": [
-          "JB wo buy pa click kra aga upi id aye or pay conform ka lia Whatsapp ha discord aye"
+          "... or logo or banner bhi change kr do SB premium bnao ..."
         ]
       },
       "acceptanceCriteria": [
-        "Clicking a panel card or its \"BUY NOW\" button opens an in-app payment step that shows the UPI ID `9352000693@axl` with copy-to-clipboard and the payment confirmation buttons (WhatsApp and Discord).",
-        "The prior behavior of instantly opening WhatsApp on panel click/BUY NOW is removed for this interaction.",
-        "The WhatsApp confirmation link still uses the existing WhatsApp number constant `+923137863480` and remains URL-encoded.",
-        "If a panel name is available from the clicked card, the WhatsApp payment-proof message includes the panel name (using the existing `buildPaymentProofWhatsAppLink(panelName?)` capability)."
+        "Site header uses the new logo asset instead of the old one.",
+        "Hero section uses the new banner asset instead of the old one, with an overlay/opacity treatment that keeps the headline/subtext readable.",
+        "All asset references point to files under frontend/public/assets/generated and load correctly in preview (no broken images)."
+      ]
+    },
+    {
+      "id": "REQ-44",
+      "text": "Audit and correct any conflicting/unused global theme styling so the app consistently renders in the intended dark-only theme without accidental light-theme tokens affecting contrast.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-3"
+        ],
+        "quotes": [
+          "colour sai sa lgao sai nhi LG rha dark colour lgao"
+        ]
+      },
+      "acceptanceCriteria": [
+        "There is a single, consistent source of truth for theme tokens applied to the rendered app (no accidental overrides causing inconsistent foreground/background colors).",
+        "After the change, text and surfaces match the intended dark-only palette across all sections and the payment modal."
       ]
     }
   ],
   "constraints": [
-    "Frontend immutable paths must not be edited: `frontend/src/hooks/useInternetIdentity.ts`, `frontend/src/hooks/useInternetIdentity.tsx`, `frontend/src/hooks/useActor.ts`, `frontend/src/main.tsx`, and anything under `frontend/src/components/ui`.",
-    "Keep the backend as-is (single Motoko actor remains empty unless strictly necessary); this change should be frontend-only.",
-    "Use English for all new/updated user-facing text in the modified payment/buy flow UI."
+    "Do not change backend architecture; backend can remain unchanged.",
+    "Do not modify any files under frontend/immutablePaths (compose existing UI components instead).",
+    "Keep all existing panel definitions and INR prices unchanged.",
+    "Keep WhatsApp number constant as +923137863480 and keep Discord invite URL constant as https://discord.gg/black-exe (no hardcoded replacements).",
+    "Preserve the current purchase flow behavior (panel → duration selection → UPI copy → WhatsApp/Discord confirmation) while improving UI/UX and readability."
   ],
   "nonGoals": [
-    "Do not implement actual payment verification or automatic payment status checking.",
-    "Do not change the WhatsApp number (+923137863480).",
-    "Do not add new backend storage, admin panels, or order management."
+    "Adding new backend features, storage, or databases.",
+    "Changing business logic for pricing, durations, or panel availability.",
+    "Adding new authentication providers (Internet Identity remains the only supported auth option).",
+    "Introducing a light theme or theme toggle."
   ],
   "imageRequirements": {
     "required": [],
-    "edits": []
+    "edits": [
+      "Premium cyberpunk emblem-style logo with sharper details, transparent background (black-exe-logo-transparent.dim_1024x1024.png > black-exe-logo-premium-transparent.dim_1024x1024.png)",
+      "Premium wide cyberpunk banner background with darker, cleaner composition and safe text area for readability (black-exe-banner.dim_1920x720.png > black-exe-banner-premium.dim_1920x720.png)"
+    ]
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
   }
 }

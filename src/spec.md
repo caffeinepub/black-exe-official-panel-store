@@ -1,12 +1,12 @@
 # Specification
 
 ## Summary
-**Goal:** Refresh the frontend with a premium dark cyberpunk UI, improve text readability across the site, and replace the hero/banner and logo assets without breaking existing flows.
+**Goal:** Update panel pricing so INTERNAL and AIMBOT VISIBLE match BASIC across all supported durations, and add a new panel “SILENT AIM KRIPTON” with the user-provided pricing (with duplicate duration resolved).
 
 **Planned changes:**
-- Redesign UI styling across Header, Section Navigation, Hero, Dashboard, Panels, Pricing Table, Contact, and Payment modal to use a cohesive darker cyberpunk palette (dark black/dark gray/dark blue) with consistent spacing and typography.
-- Improve site-wide readability by adjusting contrast, font sizing, line-height, and overlays where text sits on images/glass panels (including hero text over the banner).
-- Replace the current logo and hero banner with new premium versions and update frontend references to the new asset filenames under `frontend/public/assets/generated`.
-- Audit and remove/resolve conflicting or unused global theme styling so the app renders consistently in a dark-only theme (no accidental light-theme tokens).
+- In `frontend/src/data/panels.ts`, set the INTERNAL panel prices to exactly match BASIC for all BASIC durations (1 DAY, 2 DAYS, 7 DAYS, 1 MONTH, PERMANENT).
+- In `frontend/src/data/panels.ts`, set the AIMBOT VISIBLE panel prices to exactly match BASIC for all BASIC durations (1 DAY, 2 DAYS, 7 DAYS, 1 MONTH, PERMANENT).
+- Add a new panel entry named “SILENT AIM KRIPTON” in `frontend/src/data/panels.ts` and ensure it appears everywhere panels are rendered (Available Panels grid, search/filter, Pricing Table).
+- Resolve the conflicting “7 DAY” prices for “SILENT AIM KRIPTON” by implementing a single 7-day duration entry (using the site’s duration label format, e.g., “7 DAYS”) and ensuring no duplicate duration labels exist in its prices list.
 
-**User-visible outcome:** The site appears consistently darker and more premium, text is clearly readable across all sections (including the hero), and the header logo + hero banner are updated—while the existing purchase flow and section navigation continue to work as before.
+**User-visible outcome:** INTERNAL and AIMBOT VISIBLE show the same price range and per-duration prices as BASIC, and users can find and view the new “SILENT AIM KRIPTON” panel in both the panels list and pricing table with consistent, non-duplicated durations.

@@ -13,17 +13,12 @@ export type AppSection = 'home' | 'dashboard' | 'panels' | 'pricing' | 'contact'
 function App() {
   const [activeSection, setActiveSection] = useState<AppSection>('home');
 
-  const scrollToSection = (sectionId: AppSection) => {
-    const elementId = sectionId === 'home' ? 'hero-section' : `${sectionId}-section`;
-    const element = document.getElementById(elementId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      setActiveSection(sectionId);
-    }
+  const handleSectionChange = (section: AppSection) => {
+    setActiveSection(section);
   };
 
   const handleNavigateToPanels = () => {
-    scrollToSection('panels');
+    setActiveSection('panels');
   };
 
   return (
@@ -32,29 +27,39 @@ function App() {
       
       <SectionNavigation 
         activeSection={activeSection}
-        onSectionChange={scrollToSection}
+        onSectionChange={handleSectionChange}
       />
 
       <main className="relative z-10">
-        <div id="hero-section" className="section-fade-in">
-          <HeroSection />
-        </div>
+        {activeSection === 'home' && (
+          <div className="section-fade-in">
+            <HeroSection />
+          </div>
+        )}
 
-        <div id="dashboard-section" className="section-fade-in">
-          <DashboardSection onNavigateToPanels={handleNavigateToPanels} />
-        </div>
+        {activeSection === 'dashboard' && (
+          <div className="section-fade-in">
+            <DashboardSection onNavigateToPanels={handleNavigateToPanels} />
+          </div>
+        )}
 
-        <div id="panels-section" className="section-fade-in">
-          <PanelsSection />
-        </div>
+        {activeSection === 'panels' && (
+          <div className="section-fade-in">
+            <PanelsSection />
+          </div>
+        )}
 
-        <div id="pricing-section" className="section-fade-in">
-          <PricingTableSection />
-        </div>
+        {activeSection === 'pricing' && (
+          <div className="section-fade-in">
+            <PricingTableSection />
+          </div>
+        )}
 
-        <div id="contact-section" className="section-fade-in">
-          <ContactSection />
-        </div>
+        {activeSection === 'contact' && (
+          <div className="section-fade-in">
+            <ContactSection />
+          </div>
+        )}
       </main>
 
       <SiteFooter />

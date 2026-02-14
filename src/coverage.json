@@ -1,103 +1,46 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-14T16:43:45.608Z",
+  "generatedAt": "2026-02-14T17:43:49.744Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 4,
-    "implemented": 4,
+    "total": 3,
+    "implemented": 3,
     "items": [
       {
-        "id": "REQ-41",
-        "summary": "Redesign the site UI to look more premium with a darker, cleaner cyberpunk palette (dark black/dark gray/dark blue) and consistent spacing/typography across all sections (Header, Section Navigation, Hero, Dashboard, Panels, Pricing Table, Contact, Payment modal).",
+        "id": "REQ-61",
+        "summary": "Update the panel catalog pricing so that the panels named \"INTERNAL\" and \"AIMBOT VISIBLE\" have the exact same prices as the \"BASIC\" panel for all durations that BASIC supports (1 DAY, 2 DAYS, 7 DAYS, 1 MONTH, PERMANENT).",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/index.css",
-          "frontend/tailwind.config.js",
-          "frontend/src/components/marketing/SiteHeader.tsx",
-          "frontend/src/components/marketing/SectionNavigation.tsx",
-          "frontend/src/components/marketing/HeroSection.tsx",
-          "frontend/src/components/marketing/DashboardSection.tsx",
-          "frontend/src/components/marketing/PanelsSection.tsx",
-          "frontend/src/components/marketing/PanelCard.tsx",
-          "frontend/src/components/marketing/PricingTableSection.tsx",
-          "frontend/src/components/marketing/ContactSection.tsx",
-          "frontend/src/components/marketing/PaymentPanel.tsx",
-          "frontend/src/components/marketing/SiteFooter.tsx"
+          "frontend/src/data/panels.ts"
         ],
         "matchedFiles": [
-          "frontend/src/index.css",
-          "frontend/tailwind.config.js",
-          "frontend/src/components/marketing/SiteHeader.tsx",
-          "frontend/src/components/marketing/SectionNavigation.tsx",
-          "frontend/src/components/marketing/HeroSection.tsx",
-          "frontend/src/components/marketing/DashboardSection.tsx",
-          "frontend/src/components/marketing/PanelsSection.tsx",
-          "frontend/src/components/marketing/PanelCard.tsx",
-          "frontend/src/components/marketing/PricingTableSection.tsx",
-          "frontend/src/components/marketing/ContactSection.tsx",
-          "frontend/src/components/marketing/PaymentPanel.tsx",
-          "frontend/src/components/marketing/SiteFooter.tsx"
+          "frontend/src/data/panels.ts"
         ]
       },
       {
-        "id": "REQ-42",
-        "summary": "Fix site-wide text readability/visibility issues by improving contrast, font sizing, line-height, and background overlays wherever text is hard to see (especially over images and glass panels).",
+        "id": "REQ-62",
+        "summary": "Add a new panel entry to the panel catalog with name \"SILENT AIM KRIPTON\" and include it everywhere panels are rendered (Available Panels grid, search/filter, and the Pricing Table). Use the exact prices provided by the user for the durations they specified.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/index.css",
-          "frontend/src/components/marketing/HeroSection.tsx",
-          "frontend/src/components/marketing/DashboardSection.tsx",
-          "frontend/src/components/marketing/PanelsSection.tsx",
-          "frontend/src/components/marketing/PanelCard.tsx",
-          "frontend/src/components/marketing/PricingTableSection.tsx",
-          "frontend/src/components/marketing/ContactSection.tsx",
-          "frontend/src/components/marketing/PaymentPanel.tsx"
+          "frontend/src/data/panels.ts"
         ],
         "matchedFiles": [
-          "frontend/src/index.css",
-          "frontend/src/components/marketing/HeroSection.tsx",
-          "frontend/src/components/marketing/DashboardSection.tsx",
-          "frontend/src/components/marketing/PanelsSection.tsx",
-          "frontend/src/components/marketing/PanelCard.tsx",
-          "frontend/src/components/marketing/PricingTableSection.tsx",
-          "frontend/src/components/marketing/ContactSection.tsx",
-          "frontend/src/components/marketing/PaymentPanel.tsx"
+          "frontend/src/data/panels.ts"
         ]
       },
       {
-        "id": "REQ-43",
-        "summary": "Replace the current site logo and banner with new premium versions and update the UI to use the new asset filenames (do not reduce hero text readability when applying the new banner).",
+        "id": "REQ-63",
+        "summary": "Resolve the conflicting/duplicate duration provided for \"SILENT AIM KRIPTON\" before shipping: the user specified two different prices for \"7 DAY\" (250 and 500). Implement the new panel with a single, unambiguous set of duration keys (matching the site’s duration labels, e.g., \"7 DAYS\"), and ensure no panel contains duplicate duration entries in its prices array.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/public/assets/generated/black-exe-logo-premium-transparent.dim_1024x1024.png",
-          "frontend/public/assets/generated/black-exe-banner-premium.dim_1920x720.png",
-          "frontend/src/components/marketing/SiteHeader.tsx",
-          "frontend/src/components/marketing/HeroSection.tsx"
+          "frontend/src/data/panels.ts"
         ],
         "matchedFiles": [
-          "frontend/public/assets/generated/black-exe-logo-premium-transparent.dim_1024x1024.png",
-          "frontend/public/assets/generated/black-exe-banner-premium.dim_1920x720.png",
-          "frontend/src/components/marketing/SiteHeader.tsx",
-          "frontend/src/components/marketing/HeroSection.tsx"
-        ]
-      },
-      {
-        "id": "REQ-44",
-        "summary": "Audit and correct any conflicting/unused global theme styling so the app consistently renders in the intended dark-only theme without accidental light-theme tokens affecting contrast.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/index.css",
-          "frontend/src/main.tsx",
-          "frontend/src/hooks/useTheme.ts",
-          "frontend/src/components/marketing/ThemeToggle.tsx",
-          "frontend/src/index.css"
-        ],
-        "matchedFiles": [
-          "frontend/src/index.css"
+          "frontend/src/data/panels.ts"
         ]
       }
     ]
@@ -107,20 +50,7 @@
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/public/assets/generated/black-exe-banner-premium.dim_1920x720.png",
-    "frontend/public/assets/generated/black-exe-logo-premium-transparent.dim_1024x1024.png",
-    "frontend/src/components/marketing/ContactSection.tsx",
-    "frontend/src/components/marketing/DashboardSection.tsx",
-    "frontend/src/components/marketing/HeroSection.tsx",
-    "frontend/src/components/marketing/PanelCard.tsx",
-    "frontend/src/components/marketing/PanelsSection.tsx",
-    "frontend/src/components/marketing/PaymentPanel.tsx",
-    "frontend/src/components/marketing/PricingTableSection.tsx",
-    "frontend/src/components/marketing/SectionNavigation.tsx",
-    "frontend/src/components/marketing/SiteFooter.tsx",
-    "frontend/src/components/marketing/SiteHeader.tsx",
-    "frontend/src/index.css",
-    "frontend/tailwind.config.js",
+    "frontend/src/data/panels.ts",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

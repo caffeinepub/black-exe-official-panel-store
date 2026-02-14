@@ -2,21 +2,10 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-redesign-the-site-ui-to-look-more-premium-with-a-darker-cleaner-cyberpunk-palette-dark-black-dark-gray-dark-blue-and-consistent-spacing-typography-across-all-sections-header-section-navigation-hero-dashboard-panels-pricing-table-contact-payment-modal",
-      "featureTitle": "Redesign the site UI to look more premium with a darker, cleaner cyberpunk palette (dark black/dark gray/dark blue) and consistent spacing/typography across all sections (Header, Section Navigation, Hero, Dashboard, Panels, Pricing Table, Contact, Payment modal).",
+      "featureId": "feature-update-the-panel-catalog-pricing-so-that-the-panels-named-internal-and-aimbot-visible-have-the-exact-same-prices-as-the-basic-panel-for-all-durations-that-basic-supports-1-day-2-days-7-days-1-month-permanent",
+      "featureTitle": "Update the panel catalog pricing so that the panels named \"INTERNAL\" and \"AIMBOT VISIBLE\" have the exact same prices as the \"BASIC\" panel for all durations that BASIC supports (1 DAY, 2 DAYS, 7 DAYS, 1 MONTH, PERMANENT).",
       "files": [
-        "frontend/src/components/marketing/ContactSection.tsx",
-        "frontend/src/components/marketing/DashboardSection.tsx",
-        "frontend/src/components/marketing/HeroSection.tsx",
-        "frontend/src/components/marketing/PanelCard.tsx",
-        "frontend/src/components/marketing/PanelsSection.tsx",
-        "frontend/src/components/marketing/PaymentPanel.tsx",
-        "frontend/src/components/marketing/PricingTableSection.tsx",
-        "frontend/src/components/marketing/SectionNavigation.tsx",
-        "frontend/src/components/marketing/SiteFooter.tsx",
-        "frontend/src/components/marketing/SiteHeader.tsx",
-        "frontend/src/index.css",
-        "frontend/tailwind.config.js"
+        "frontend/src/data/panels.ts"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -26,22 +15,15 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-41"
+        "REQ-61"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-fix-site-wide-text-readability-visibility-issues-by-improving-contrast-font-sizing-line-height-and-background-overlays-wherever-text-is-hard-to-see-especially-over-images-and-glass-panels",
-      "featureTitle": "Fix site-wide text readability/visibility issues by improving contrast, font sizing, line-height, and background overlays wherever text is hard to see (especially over images and glass panels).",
+      "featureId": "feature-add-a-new-panel-entry-to-the-panel-catalog-with-name-silent-aim-kripton-and-include-it-everywhere-panels-are-rendered-available-panels-grid-search-filter-and-the-pricing-table-use-the-exact-prices-provided-by-the-user-for-the-durations-they-specified",
+      "featureTitle": "Add a new panel entry to the panel catalog with name \"SILENT AIM KRIPTON\" and include it everywhere panels are rendered (Available Panels grid, search/filter, and the Pricing Table). Use the exact prices provided by the user for the durations they specified.",
       "files": [
-        "frontend/src/components/marketing/ContactSection.tsx",
-        "frontend/src/components/marketing/DashboardSection.tsx",
-        "frontend/src/components/marketing/HeroSection.tsx",
-        "frontend/src/components/marketing/PanelCard.tsx",
-        "frontend/src/components/marketing/PanelsSection.tsx",
-        "frontend/src/components/marketing/PaymentPanel.tsx",
-        "frontend/src/components/marketing/PricingTableSection.tsx",
-        "frontend/src/index.css"
+        "frontend/src/data/panels.ts"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -51,16 +33,15 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-42"
+        "REQ-62"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-replace-the-current-site-logo-and-banner-with-new-premium-versions-and-update-the-ui-to-use-the-new-asset-filenames-do-not-reduce-hero-text-readability-when-applying-the-new-banner",
-      "featureTitle": "Replace the current site logo and banner with new premium versions and update the UI to use the new asset filenames (do not reduce hero text readability when applying the new banner).",
+      "featureId": "feature-resolve-the-conflicting-duplicate-duration-provided-for-silent-aim-kripton-before-shipping-the-user-specified-two-different-prices-for-7-day-250-and-500-implement-the-new-panel-with-a-single-unambiguous-set-of-duration-keys-matching-the-site-s-duration-labels-e-g-7-days-and-ensure-no-panel-contains-duplicate-duration-entries-in-its-prices-array",
+      "featureTitle": "Resolve the conflicting/duplicate duration provided for \"SILENT AIM KRIPTON\" before shipping: the user specified two different prices for \"7 DAY\" (250 and 500). Implement the new panel with a single, unambiguous set of duration keys (matching the site’s duration labels, e.g., \"7 DAYS\"), and ensure no panel contains duplicate duration entries in its prices array.",
       "files": [
-        "frontend/src/components/marketing/HeroSection.tsx",
-        "frontend/src/components/marketing/SiteHeader.tsx"
+        "frontend/src/data/panels.ts"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -70,25 +51,7 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-43"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-audit-and-correct-any-conflicting-unused-global-theme-styling-so-the-app-consistently-renders-in-the-intended-dark-only-theme-without-accidental-light-theme-tokens-affecting-contrast",
-      "featureTitle": "Audit and correct any conflicting/unused global theme styling so the app consistently renders in the intended dark-only theme without accidental light-theme tokens affecting contrast.",
-      "files": [
-        "frontend/src/index.css"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-44"
+        "REQ-63"
       ],
       "confidence": "high"
     }

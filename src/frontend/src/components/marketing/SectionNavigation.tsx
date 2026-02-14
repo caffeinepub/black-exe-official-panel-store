@@ -16,13 +16,18 @@ export function SectionNavigation({ activeSection, onSectionChange }: SectionNav
   ];
 
   return (
-    <nav className="sticky top-28 z-40 glass-panel backdrop-blur-xl border-b-2 border-primary/40 shadow-lg">
+    <nav 
+      className="sticky top-28 z-40 glass-panel backdrop-blur-xl border-b-2 border-primary/40 shadow-lg"
+      role="navigation"
+      aria-label="Section navigation"
+    >
       <div className="container mx-auto px-4">
         <div className="flex overflow-x-auto scrollbar-hide gap-3">
           {sections.map((section) => (
             <button
               key={section.id}
               onClick={() => onSectionChange(section.id)}
+              aria-current={activeSection === section.id ? 'page' : undefined}
               className={`
                 flex items-center gap-4 px-8 py-6 font-cyber font-bold text-lg tracking-wide
                 whitespace-nowrap transition-all duration-300 relative

@@ -1,193 +1,54 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Premium dark cyberpunk UI refresh + readability fixes + updated logo/banner assets",
+  "title": "Panel catalog pricing updates and new SILENT AIM KRIPTON panel",
   "requirements": [
     {
-      "id": "REQ-41",
-      "summary": "Apply a cohesive premium dark cyberpunk palette and consistent spacing/typography across header, section navigation, hero, dashboard, panels, pricing table, contact, and payment modal.",
+      "id": "REQ-61",
+      "summary": "Make INTERNAL and AIMBOT VISIBLE pricing exactly match BASIC for all supported durations.",
       "acceptanceCriteria": [
-        "All primary UI surfaces (page background, glass panels, modals, navigation) use a cohesive dark palette with consistent border/glow treatment (no mismatched grays/blacks between sections).",
-        "Buttons/inputs/tabs have consistent premium hover + focus states aligned with the existing cyberpunk/glass style.",
-        "No existing flows are removed or broken (section switching, dashboard tabs, panel selection → duration selection → UPI copy → WhatsApp/Discord confirmation)."
+        "In frontend/src/data/panels.ts, the price list for INTERNAL exactly matches BASIC for every duration BASIC has.",
+        "In frontend/src/data/panels.ts, the price list for AIMBOT VISIBLE exactly matches BASIC for every duration BASIC has.",
+        "Panels UI cards (Available Panels) reflect the updated INTERNAL and AIMBOT VISIBLE price ranges.",
+        "Pricing Table section reflects the updated INTERNAL and AIMBOT VISIBLE prices for each duration."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/index.css",
+          "path": "frontend/src/data/panels.ts",
           "operation": "modify",
-          "description": "Refine the dark-only palette tokens and shared cyberpunk/glass utilities (panel, nav, modal, table, inputs, buttons) to ensure consistent surface/background/border/glow treatment and typography scale across all sections."
-        },
-        {
-          "path": "frontend/tailwind.config.js",
-          "operation": "modify",
-          "description": "Adjust/extend Tailwind theme mappings (colors, shadows, radii, animations) to align with the refined premium dark palette and improve consistency across components."
-        },
-        {
-          "path": "frontend/src/components/marketing/SiteHeader.tsx",
-          "operation": "modify",
-          "description": "Update header layout spacing, typography hierarchy, and surface styling to match the premium dark/glass system while preserving existing structure and behavior."
-        },
-        {
-          "path": "frontend/src/components/marketing/SectionNavigation.tsx",
-          "operation": "modify",
-          "description": "Align section navigation button sizing, spacing, and active/hover/focus states with the premium dark theme so nav appearance is consistent with other interactive surfaces."
-        },
-        {
-          "path": "frontend/src/components/marketing/HeroSection.tsx",
-          "operation": "modify",
-          "description": "Tune hero spacing and typography scale (mobile/tablet/desktop) to better match the refreshed premium look without altering section placement or navigation behavior."
-        },
-        {
-          "path": "frontend/src/components/marketing/DashboardSection.tsx",
-          "operation": "modify",
-          "description": "Standardize dashboard tab/card surface styling and typography to match the refreshed dark/glass system while keeping all tab behaviors unchanged."
-        },
-        {
-          "path": "frontend/src/components/marketing/PanelsSection.tsx",
-          "operation": "modify",
-          "description": "Use existing shadcn-ui components (Button/Input/Select) styling hooks to unify control sizing, spacing, and states with the premium theme; preserve existing panel selection and payment modal behavior. Verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/components/marketing/PanelCard.tsx",
-          "operation": "modify",
-          "description": "Update panel card surface styling, spacing, and button states to match the premium theme while keeping panel info and buy interaction unchanged."
-        },
-        {
-          "path": "frontend/src/components/marketing/PricingTableSection.tsx",
-          "operation": "modify",
-          "description": "Refresh pricing table/card surfaces, row hover states, and typography for a more premium look while keeping the same panel list and INR prices unchanged."
-        },
-        {
-          "path": "frontend/src/components/marketing/ContactSection.tsx",
-          "operation": "modify",
-          "description": "Unify contact card surfaces, spacing, and hover/focus states with the premium dark theme while preserving WhatsApp/Discord links sourced from config."
-        },
-        {
-          "path": "frontend/src/components/marketing/PaymentPanel.tsx",
-          "operation": "modify",
-          "description": "Polish payment panel visual hierarchy (duration grid, summary, UPI copy, confirmation CTAs) and normalize interactive states using the existing shadcn-ui Button where applicable; keep purchase flow behavior identical. Verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/components/marketing/SiteFooter.tsx",
-          "operation": "modify",
-          "description": "Align footer surface/border/typography styling with the refreshed premium dark system for consistent end-of-page presentation."
+          "description": "Update the INTERNAL and AIMBOT VISIBLE panels' prices arrays so they exactly match BASIC across: 1 DAY, 2 DAYS, 7 DAYS, 1 MONTH, PERMANENT (same duration labels and same numeric prices)."
         }
       ]
     },
     {
-      "id": "REQ-42",
-      "summary": "Fix site-wide readability issues via improved contrast, font sizing/line-height, and stronger overlays on image/glass backgrounds.",
+      "id": "REQ-62",
+      "summary": "Add a new SILENT AIM KRIPTON panel to the catalog so it renders everywhere panels are listed (grid, search/filter, pricing table).",
       "acceptanceCriteria": [
-        "Hero heading and subtext remain clearly readable over the banner image on mobile and desktop (no washed-out text, no blending into background).",
-        "All section headings, card titles, prices, and button labels are readable with strong contrast against their backgrounds in the dark theme.",
-        "No text is clipped/cropped/overlapping at common breakpoints (mobile, tablet, desktop)."
+        "A new panel named \"SILENT AIM KRIPTON\" is present in the Available Panels grid and is searchable by name.",
+        "The new panel appears as its own row/card in the Pricing Table section.",
+        "The new panel’s prices in the UI match the values implemented in frontend/src/data/panels.ts (no additional price changes elsewhere)."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/index.css",
+          "path": "frontend/src/data/panels.ts",
           "operation": "modify",
-          "description": "Adjust global typography defaults (base font-size, line-height), muted-foreground contrast, and glass surface/background overlay utilities to improve text legibility across panels and modals."
-        },
-        {
-          "path": "frontend/src/components/marketing/HeroSection.tsx",
-          "operation": "modify",
-          "description": "Strengthen the banner overlay/gradient and tune heading/subtext sizing/line-height for mobile/desktop so text stays readable over the banner image."
-        },
-        {
-          "path": "frontend/src/components/marketing/DashboardSection.tsx",
-          "operation": "modify",
-          "description": "Improve readability of dashboard headings/body copy (contrast and line-height) and ensure no clipping/overlap at common breakpoints."
-        },
-        {
-          "path": "frontend/src/components/marketing/PanelsSection.tsx",
-          "operation": "modify",
-          "description": "Ensure search/filter controls and empty states meet contrast/readability requirements (labels, placeholders, focus rings) while continuing to use existing shadcn-ui Input/Select styling. Verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/components/marketing/PanelCard.tsx",
-          "operation": "modify",
-          "description": "Increase price/title readability on glass surfaces (contrast, spacing, line-height) without changing displayed values."
-        },
-        {
-          "path": "frontend/src/components/marketing/PricingTableSection.tsx",
-          "operation": "modify",
-          "description": "Improve table/card text contrast (headers, prices) and spacing so content remains readable and not clipped on mobile/tablet/desktop."
-        },
-        {
-          "path": "frontend/src/components/marketing/ContactSection.tsx",
-          "operation": "modify",
-          "description": "Tune contact section typography and contrast for the dark theme to ensure headings and labels remain clearly readable."
-        },
-        {
-          "path": "frontend/src/components/marketing/PaymentPanel.tsx",
-          "operation": "modify",
-          "description": "Improve readability in payment panel (duration labels, summary rows, UPI ID) and verify layout remains unclipped/scrollable in the modal at smaller heights."
+          "description": "Add a new panel entry with name \"SILENT AIM KRIPTON\" and the user-provided pricing (after resolving the duplicate 7 DAY conflict per REQ-63), using the site's existing duration labels so it automatically appears in Available Panels, search/filter, and the Pricing Table via the shared PANELS data source."
         }
       ]
     },
     {
-      "id": "REQ-43",
-      "summary": "Replace site logo and hero banner with new premium assets and update all references to the new filenames while preserving hero text readability.",
+      "id": "REQ-63",
+      "summary": "Resolve the duplicate/conflicting 7 DAY price for SILENT AIM KRIPTON and ensure no duplicate duration entries exist in any panel prices.",
       "acceptanceCriteria": [
-        "Site header uses the new logo asset instead of the old one.",
-        "Hero section uses the new banner asset instead of the old one, with an overlay/opacity treatment that keeps the headline/subtext readable.",
-        "All asset references point to files under frontend/public/assets/generated and load correctly in preview (no broken images)."
+        "The \"SILENT AIM KRIPTON\" panel has no duplicate duration labels in its prices array.",
+        "The Pricing Table does not render two values for the same duration for \"SILENT AIM KRIPTON\".",
+        "The Panels duration filter continues to function correctly (filtering by a duration only includes panels that define that duration)."
       ],
       "file_operations": [
         {
-          "path": "frontend/public/assets/generated/black-exe-logo-premium-transparent.dim_1024x1024.png",
-          "operation": "create",
-          "description": "Add the generated premium logo asset file at the exact path so the header can reference it."
-        },
-        {
-          "path": "frontend/public/assets/generated/black-exe-banner-premium.dim_1920x720.png",
-          "operation": "create",
-          "description": "Add the generated premium banner asset file at the exact path so the hero can reference it."
-        },
-        {
-          "path": "frontend/src/components/marketing/SiteHeader.tsx",
+          "path": "frontend/src/data/panels.ts",
           "operation": "modify",
-          "description": "Update the header logo image source to frontend/public/assets/generated/black-exe-logo-premium-transparent.dim_1024x1024.png and ensure sizing/contrast still fits the premium dark header."
-        },
-        {
-          "path": "frontend/src/components/marketing/HeroSection.tsx",
-          "operation": "modify",
-          "description": "Update the hero banner image source to frontend/public/assets/generated/black-exe-banner-premium.dim_1920x720.png and adjust overlay/opacity treatment to maintain strong headline/subtext readability."
-        }
-      ]
-    },
-    {
-      "id": "REQ-44",
-      "summary": "Eliminate conflicting/unused global theme styling so the app consistently renders a single dark-only theme without accidental light tokens impacting contrast.",
-      "acceptanceCriteria": [
-        "There is a single, consistent source of truth for theme tokens applied to the rendered app (no accidental overrides causing inconsistent foreground/background colors).",
-        "After the change, text and surfaces match the intended dark-only palette across all sections and the payment modal."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/index.css",
-          "operation": "modify",
-          "description": "Remove or neutralize light-theme token defaults so this file cannot override the intended dark-only palette (align tokens with the dark-only system and avoid requiring a .dark class for correct contrast)."
-        },
-        {
-          "path": "frontend/src/main.tsx",
-          "operation": "modify",
-          "description": "Ensure the app imports only the intended global stylesheet(s) for the dark-only theme and does not inadvertently pull in conflicting global theme files."
-        },
-        {
-          "path": "frontend/src/hooks/useTheme.ts",
-          "operation": "modify",
-          "description": "Either implement a no-op dark-only theme hook (explicitly enforcing dark tokens) or remove unused exports to prevent future accidental light-theme wiring."
-        },
-        {
-          "path": "frontend/src/components/marketing/ThemeToggle.tsx",
-          "operation": "modify",
-          "description": "Update the placeholder ThemeToggle so it cannot introduce light-theme tokens or toggling behavior (keep dark-only behavior; optionally render nothing with a clear comment)."
-        },
-        {
-          "path": "frontend/src/index.css",
-          "operation": "modify",
-          "description": "Consolidate theme token definitions and document the single source of truth for dark-only palette utilities so all sections/modals consistently use the same variables."
+          "description": "Implement SILENT AIM KRIPTON with a single unambiguous set of durations (matching existing site labels). Resolve the user's duplicate \"7 DAY\" entries by mapping them to distinct existing durations without introducing new duration types (e.g., interpret 250 as \"2 DAYS\" and 500 as \"7 DAYS\"), and ensure the final prices array contains no duplicate duration strings."
         }
       ]
     }

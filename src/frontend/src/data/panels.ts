@@ -69,22 +69,33 @@ export const PANELS: Panel[] = [
     id: 'aimbot-visible',
     name: 'AIMBOT VISIBLE',
     prices: [
-      { duration: '1 DAY', price: 130 },
-      { duration: '2 DAYS', price: 250 },
-      { duration: '7 DAYS', price: 500 },
-      { duration: '1 MONTH', price: 1100 },
-      { duration: 'PERMANENT', price: 3000 }
+      { duration: '1 DAY', price: 80 },
+      { duration: '2 DAYS', price: 150 },
+      { duration: '7 DAYS', price: 300 },
+      { duration: '1 MONTH', price: 700 },
+      { duration: 'PERMANENT', price: 2000 }
     ]
   },
   {
     id: 'internal',
     name: 'INTERNAL',
     prices: [
-      { duration: '1 DAY', price: 140 },
-      { duration: '2 DAYS', price: 270 },
-      { duration: '7 DAYS', price: 550 },
-      { duration: '1 MONTH', price: 1200 },
-      { duration: 'PERMANENT', price: 3200 }
+      { duration: '1 DAY', price: 80 },
+      { duration: '2 DAYS', price: 150 },
+      { duration: '7 DAYS', price: 300 },
+      { duration: '1 MONTH', price: 700 },
+      { duration: 'PERMANENT', price: 2000 }
+    ]
+  },
+  {
+    id: 'silent-aim-kripton',
+    name: 'SILENT AIM KRIPTON',
+    prices: [
+      { duration: '1 DAY', price: 150 },
+      { duration: '2 DAYS', price: 250 },
+      { duration: '7 DAYS', price: 500 },
+      { duration: '1 MONTH', price: 1300 },
+      { duration: 'PERMANENT', price: 3000 }
     ]
   },
   {

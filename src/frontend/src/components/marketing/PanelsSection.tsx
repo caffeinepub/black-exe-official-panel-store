@@ -8,7 +8,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '.
 import { Button } from '../ui/button';
 
 const STORAGE_KEY_PANEL = 'blackexe_last_panel';
-const STORAGE_KEY_DURATION = 'blackexe_last_duration';
 
 export function PanelsSection() {
   const [selectedPanel, setSelectedPanel] = useState<Panel | null>(null);
@@ -61,7 +60,7 @@ export function PanelsSection() {
                 placeholder="Search panels by name..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-14 h-16 text-lg font-cyber search-control focus-ring-blue font-semibold"
+                className="pl-14 h-16 text-lg font-cyber search-control focus-ring-blue font-semibold text-foreground"
               />
             </div>
 
@@ -69,13 +68,13 @@ export function PanelsSection() {
             <div className="relative">
               <Filter className="absolute left-5 top-1/2 -translate-y-1/2 w-6 h-6 text-primary z-10 pointer-events-none" />
               <Select value={durationFilter} onValueChange={setDurationFilter}>
-                <SelectTrigger className="h-16 pl-14 text-lg font-cyber search-control focus-ring-blue font-semibold">
+                <SelectTrigger className="h-16 pl-14 text-lg font-cyber search-control focus-ring-blue font-semibold text-foreground">
                   <SelectValue placeholder="Filter by duration" />
                 </SelectTrigger>
                 <SelectContent className="glass-panel border-2 border-primary/40">
-                  <SelectItem value="all" className="font-cyber text-lg font-semibold">All Durations</SelectItem>
+                  <SelectItem value="all" className="font-cyber text-lg font-semibold text-foreground">All Durations</SelectItem>
                   {durations.map((duration) => (
-                    <SelectItem key={duration} value={duration} className="font-cyber text-lg font-semibold">
+                    <SelectItem key={duration} value={duration} className="font-cyber text-lg font-semibold text-foreground">
                       {duration}
                     </SelectItem>
                   ))}
@@ -90,12 +89,12 @@ export function PanelsSection() {
               <div className="flex items-center gap-4 flex-wrap">
                 <span className="text-base font-cyber text-muted-foreground font-semibold">Active filters:</span>
                 {searchQuery && (
-                  <span className="px-4 py-2 glass-panel-alt rounded-lg text-base font-cyber border border-primary/40 font-semibold">
+                  <span className="px-4 py-2 glass-panel-alt rounded-lg text-base font-cyber border border-primary/40 font-semibold text-foreground">
                     Search: "{searchQuery}"
                   </span>
                 )}
                 {durationFilter !== 'all' && (
-                  <span className="px-4 py-2 glass-panel-alt rounded-lg text-base font-cyber border border-primary/40 font-semibold">
+                  <span className="px-4 py-2 glass-panel-alt rounded-lg text-base font-cyber border border-primary/40 font-semibold text-foreground">
                     Duration: {durationFilter}
                   </span>
                 )}
@@ -125,12 +124,14 @@ export function PanelsSection() {
             <h3 className="text-3xl font-display font-bold mb-5 text-foreground leading-tight">
               No Panels Found
             </h3>
-            <p className="text-muted-foreground font-cyber text-xl mb-10 leading-relaxed">
-              No panels match your current search criteria. Try adjusting your filters or search query.
+            <p className="text-xl text-muted-foreground mb-10 font-cyber font-semibold">
+              Try adjusting your search or filters
             </p>
             <Button
               onClick={clearFilters}
-              className="font-cyber font-bold text-xl px-10 py-7 hover-glow-blue"
+              variant="outline"
+              size="lg"
+              className="font-cyber font-bold text-lg px-8 py-6"
             >
               Clear Filters
             </Button>
@@ -140,11 +141,11 @@ export function PanelsSection() {
 
       {/* Payment Modal */}
       {selectedPanel && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/96 backdrop-blur-xl">
-          <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/95 backdrop-blur-xl">
+          <div className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto">
             <button
               onClick={closePayment}
-              className="absolute top-5 right-5 z-10 p-4 glass-panel rounded-xl hover-glow-red transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-destructive"
+              className="absolute top-4 right-4 z-10 p-3 glass-panel rounded-full hover-glow-red transition-all duration-300 border-2 border-destructive/40"
               aria-label="Close payment panel"
             >
               <X className="w-7 h-7 text-destructive" />

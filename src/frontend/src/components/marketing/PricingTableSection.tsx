@@ -22,7 +22,7 @@ export function PricingTableSection() {
                   {durations.map((duration) => (
                     <th
                       key={duration}
-                      className="text-center py-6 px-4 font-cyber font-bold text-lg text-accent"
+                      className="text-center py-6 px-4 font-cyber font-bold text-lg text-muted-foreground"
                     >
                       {duration}
                     </th>
@@ -47,7 +47,7 @@ export function PricingTableSection() {
                       return (
                         <td
                           key={duration}
-                          className="text-center py-6 px-4 font-display font-bold text-xl text-muted-foreground"
+                          className="text-center py-6 px-4 font-display font-bold text-xl text-foreground"
                         >
                           {price ? `₹${price.price}` : '—'}
                         </td>
@@ -76,7 +76,7 @@ export function PricingTableSection() {
                     key={price.duration}
                     className="flex justify-between items-center p-4 glass-panel-alt rounded-xl border border-primary/30"
                   >
-                    <span className="font-cyber font-bold text-lg text-accent">
+                    <span className="font-cyber font-bold text-lg text-muted-foreground">
                       {price.duration}
                     </span>
                     <span className="font-display font-bold text-2xl text-foreground">

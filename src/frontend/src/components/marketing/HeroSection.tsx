@@ -4,7 +4,7 @@ export function HeroSection() {
       {/* Banner Background */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/assets/generated/black-exe-banner-premium.dim_1920x720.png"
+          src="/assets/generated/black-exe-banner-ultra-premium.dim_1920x720.png"
           alt="BLACK EXE Banner"
           className="w-full h-full object-cover opacity-40"
         />
@@ -14,12 +14,12 @@ export function HeroSection() {
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 py-36 md:py-48 text-center">
-        <h1 className="text-6xl md:text-8xl lg:text-9xl font-display font-black tracking-wider mb-12 neon-glow-blue animate-pulse-glow leading-tight text-enhanced">
+        <h1 className="text-6xl md:text-8xl lg:text-9xl font-display font-black tracking-wider mb-12 neon-glow-blue leading-tight text-enhanced animated-glow">
           BLACK EXE
           <br />
-          <span className="text-5xl md:text-7xl lg:text-8xl text-glow-white">OFFICIAL PANEL STORE</span>
+          <span className="text-5xl md:text-7xl lg:text-8xl text-glow-white animated-shimmer">OFFICIAL PANEL STORE</span>
         </h1>
-        <p className="text-3xl md:text-5xl font-cyber font-bold tracking-wide neon-glow-red mb-20 text-enhanced">
+        <p className="text-3xl md:text-5xl font-cyber font-bold tracking-wide neon-glow-red mb-20 text-enhanced animated-pulse-text">
           CHEAP & PREMIUM GAMING PANELS
         </p>
         

@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 23,
-  "summary": "Switch the payment experience from QR-based to UPI-ID-based, enhance the BUY flow with a duration (days) selection UI and a more premium look, then show copyable UPI ID and WhatsApp/Discord payment confirmation options; update Discord invite link to https://discord.gg/black-exe; remove the Dark/Light mode feature and keep the entire UI in a dark-only palette (dark black/dark gray/dark blue) across all sections as part of the premium redesign.",
+  "projectStateVersion": 39,
+  "summary": "Switch the payment experience from QR-based to UPI-ID-based, enhance the BUY flow with a duration (days) selection UI and a more premium look, then show copyable UPI ID and WhatsApp/Discord payment confirmation options; update Discord invite link to https://discord.gg/black-exe; remove the Dark/Light mode feature and keep the entire UI in a dark-only palette (dark black/dark gray/dark blue) across all sections as part of the premium redesign; update panel catalog/pricing by discounting INTERNAL and AIMBOT VISIBLE to match BASIC pricing and add a new panel named SILENT AIM KRIPTON with specified prices.",
   "architectural_notes": [
     "External purchase flow via WhatsApp deep-link to +923137863480 with prefilled message including selected panel name.",
     "Site visual direction: fully dark cyberpunk/hacker UI with neon blue/purple glow, glassmorphism panels, and hover glow animations.",
@@ -18,10 +18,11 @@
     "Dashboard content currently appears while scrolling instead of being activated only on button click (should be collapsed/toggled).",
     "Payment currently uses QR image(s); must be removed and replaced with copyable UPI ID 9352000693@axl.",
     "Discord invite link must be updated to https://discord.gg/black-exe.",
-    "Some on-page text is not readable/visible due to current color/contrast choices; needs contrast/typography fixes across the UI."
+    "Some on-page text is not readable/visible due to current color/contrast choices; needs contrast/typography fixes across the UI.",
+    "Deployment/build is failing; investigate and fix deployment pipeline/build errors.",
+    "Pricing for new panel “SILENT AIM KRIPTON” includes two different entries for “7 DAY” (250 and 500); duration/label needs clarification before implementation."
   ],
-  "isFixRequest": true,
-  "imageRequirements": "## Edit Images\n- Premium cyberpunk emblem-style logo with sharper details, transparent background (black-exe-logo-transparent.dim_1024x1024.png > black-exe-logo-premium-transparent.dim_1024x1024.png)\n- Premium wide cyberpunk banner background with darker, cleaner composition and safe text area for readability (black-exe-banner.dim_1920x720.png > black-exe-banner-premium.dim_1920x720.png)",
+  "isFixRequest": false,
   "existing_features": [
     {
       "id": "feature-create-a-single-page-responsive-marketing-website-for-black-exe-official-panel-store-owner-name-black-exe-with-a-fully-dark-cyberpunk-hacker-ui-style-dark-black-background-neon-blue-purple-glow-accents-bold-futuristic-gaming-typography-glassmorphism-panels-blurred-translucent-cards-and-hover-glow-animations-on-cards-and-buttons",
@@ -374,6 +375,158 @@
         "REQ-44"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-update-the-site-s-typography-colors-so-that-general-text-renders-in-a-light-white-or-light-gray-style-across-all-sections-header-section-navigation-hero-dashboard-panels-pricing-table-contact-paymentpanel-while-keeping-the-existing-dark-only-cyberpunk-theme-and-neon-accents-for-headings-active-states",
+      "title": "Update the site’s typography colors so that general text renders in a light white or light gray style across all sections (Header, Section Navigation, Hero, Dashboard, Panels, Pricing Table, Contact, PaymentPanel), while keeping the existing dark-only cyberpunk theme and neon accents for headings/active states.",
+      "reqIds": [
+        "REQ-45"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-refine-the-global-theme-tokens-and-or-shared-css-utilities-to-enforce-the-new-light-white-light-gray-typography-defaults-e-g-adjust-the-global-foreground-and-muted-foreground-values-and-ensure-commonly-used-text-utility-classes-map-to-those-tokens",
+      "title": "Refine the global theme tokens and/or shared CSS utilities to enforce the new light white/light gray typography defaults (e.g., adjust the global foreground and muted-foreground values and ensure commonly used text utility classes map to those tokens).",
+      "reqIds": [
+        "REQ-46"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-dashboard-section-so-that-no-dashboard-content-panel-is-visible-by-default-only-the-dashboard-tab-buttons-should-be-visible-initially-and-a-tab-s-content-must-appear-only-after-the-user-clicks-that-tab-button",
+      "title": "Update the Dashboard section so that no dashboard content panel is visible by default; only the dashboard tab buttons should be visible initially, and a tab’s content must appear only after the user clicks that tab button.",
+      "reqIds": [
+        "REQ-47"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-fix-dashboard-typography-colors-so-that-all-text-rendered-in-the-dashboard-section-including-tab-labels-panel-headings-body-text-and-any-supporting-labels-uses-white-light-gray-readable-text-on-the-dark-theme-and-no-dashboard-text-renders-as-black",
+      "title": "Fix Dashboard typography colors so that all text rendered in the Dashboard section (including tab labels, panel headings, body text, and any supporting labels) uses white/light-gray readable text on the dark theme, and no dashboard text renders as black.",
+      "reqIds": [
+        "REQ-48"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-investigate-the-current-deployment-failure-and-implement-the-minimal-code-config-changes-required-so-the-project-builds-and-deploys-successfully-on-the-internet-computer",
+      "title": "Investigate the current deployment failure and implement the minimal code/config changes required so the project builds and deploys successfully on the Internet Computer.",
+      "reqIds": [
+        "REQ-49"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-or-fix-any-build-breaking-placeholders-dead-imports-or-empty-modules-that-can-cause-typescript-bundling-compilation-failures-for-example-empty-component-files-or-unused-imports-that-break-the-build-when-referenced",
+      "title": "Remove or fix any build-breaking placeholders, dead imports, or empty modules that can cause TypeScript bundling/compilation failures (for example, empty component files or unused imports that break the build when referenced).",
+      "reqIds": [
+        "REQ-50"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-the-project-has-all-required-deployment-build-configuration-files-present-and-correctly-referenced-by-the-build-system-for-example-canister-frontend-build-configuration-and-fix-any-missing-misnamed-file-references-that-prevent-deployment",
+      "title": "Ensure the project has all required deployment/build configuration files present and correctly referenced by the build system (for example, canister/frontend build configuration), and fix any missing/misnamed file references that prevent deployment.",
+      "reqIds": [
+        "REQ-51"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-frontend-styling-so-that-any-user-visible-text-currently-rendering-as-black-is-changed-to-render-as-white-or-light-gray-across-the-entire-site-header-section-navigation-hero-dashboard-panels-pricing-table-contact-and-payment-ui-prefer-using-the-existing-theme-tokens-classes-text-foreground-for-primary-text-and-text-muted-foreground-for-secondary-text-instead-of-hard-coded-text-black-000-values",
+      "title": "Update the frontend styling so that any user-visible text currently rendering as black is changed to render as white or light gray across the entire site (Header, Section Navigation, Hero, Dashboard, Panels, Pricing Table, Contact, and Payment UI). Prefer using the existing theme tokens/classes (`text-foreground` for primary text and `text-muted-foreground` for secondary text) instead of hard-coded `text-black`/`#000` values.",
+      "reqIds": [
+        "REQ-52"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-section-navigation-behavior-so-the-app-does-not-show-all-major-sections-on-the-home-page-by-scrolling-on-initial-load-only-the-home-hero-section-must-be-visible-other-major-sections-dashboard-available-panels-pricing-table-contact-must-remain-hidden-inactive-until-the-user-clicks-the-corresponding-navigation-button-at-which-point-only-that-selected-section-becomes-visible",
+      "title": "Update the section navigation behavior so the app does NOT show all major sections on the Home page by scrolling. On initial load, only the Home/Hero section must be visible. Other major sections (Dashboard, Available Panels, Pricing Table, Contact) must remain hidden/inactive until the user clicks the corresponding navigation button, at which point only that selected section becomes visible.",
+      "reqIds": [
+        "REQ-53"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-animated-typography-effects-for-headings-animated-font-glow-motion-while-keeping-readability-and-the-existing-premium-dark-cyberpunk-theme-apply-the-animation-at-minimum-to-the-hero-headline-and-hero-subtext-and-ensure-the-animation-respects-reduced-motion-preferences",
+      "title": "Add animated typography effects for headings (animated font/glow/motion) while keeping readability and the existing premium dark cyberpunk theme. Apply the animation at minimum to the Hero headline and Hero subtext, and ensure the animation respects reduced-motion preferences.",
+      "reqIds": [
+        "REQ-54"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-panel-purchase-flow-ui-to-a-step-by-step-wizard-shown-after-a-user-clicks-a-panel-card-or-the-buy-now-button-step-1-duration-selection-show-only-available-durations-for-the-selected-panel-with-a-next-button-step-2-payment-method-details-show-copyable-upi-id-with-a-next-button-step-3-payment-proof-confirmation-options-whatsapp-discord-buttons-links-all-wizard-user-facing-text-must-be-in-english",
+      "title": "Update the panel purchase flow UI to a step-by-step wizard shown after a user clicks a panel card or the “Buy Now” button: Step 1 = duration selection (show only available durations for the selected panel) with a “Next” button; Step 2 = payment method/details (show copyable UPI ID) with a “Next” button; Step 3 = payment proof/confirmation options (WhatsApp + Discord buttons/links). All wizard user-facing text must be in English.",
+      "reqIds": [
+        "REQ-55"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-refactor-the-existing-paymentpanel-component-to-support-explicit-wizard-step-state-duration-payment-proof-while-preserving-existing-functionality-restore-last-selected-duration-only-when-valid-for-the-currently-selected-panel-keep-upi-id-copy-behavior-keep-whatsapp-proof-link-generation-using-the-existing-utility",
+      "title": "Refactor the existing PaymentPanel component to support explicit wizard step state (Duration → Payment → Proof) while preserving existing functionality: restore last selected duration only when valid for the currently selected panel; keep UPI ID copy behavior; keep WhatsApp proof link generation using the existing utility.",
+      "reqIds": [
+        "REQ-56"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-replace-the-current-site-logo-and-hero-banner-assets-with-newly-generated-premium-versions-and-update-the-frontend-to-use-the-new-filenames-without-reducing-hero-text-readability",
+      "title": "Replace the current site logo and hero banner assets with newly generated premium versions and update the frontend to use the new filenames without reducing hero text readability.",
+      "reqIds": [
+        "REQ-57"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-site-footer-to-match-the-previously-requested-exact-text-requirement-by-displaying-only-2026-black-exe-all-rights-reserved-no-dynamic-year-no-additional-referral-links-and-no-extra-footer-content",
+      "title": "Update the site footer to match the previously requested exact text requirement by displaying ONLY: “© 2026 BLACK EXE – ALL RIGHTS RESERVED” (no dynamic year, no additional referral links, and no extra footer content).",
+      "reqIds": [
+        "REQ-58"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-dashboard-section-so-that-no-dashboard-tab-content-panel-is-visible-by-default-only-the-dashboard-tab-buttons-should-be-visible-initially-and-a-tab-s-content-must-appear-only-after-the-user-clicks-that-tab-button",
+      "title": "Update the Dashboard section so that no dashboard tab content panel is visible by default; only the dashboard tab buttons should be visible initially, and a tab’s content must appear only after the user clicks that tab button.",
+      "reqIds": [
+        "REQ-59"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-investigate-and-fix-the-current-deployment-build-failure-by-applying-the-minimal-code-config-changes-required-so-the-project-builds-and-deploys-successfully-on-the-internet-computer",
+      "title": "Investigate and fix the current deployment/build failure by applying the minimal code/config changes required so the project builds and deploys successfully on the Internet Computer.",
+      "reqIds": [
+        "REQ-60"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-panel-catalog-pricing-so-that-the-panels-named-internal-and-aimbot-visible-have-the-exact-same-prices-as-the-basic-panel-for-all-durations-that-basic-supports-1-day-2-days-7-days-1-month-permanent",
+      "title": "Update the panel catalog pricing so that the panels named \"INTERNAL\" and \"AIMBOT VISIBLE\" have the exact same prices as the \"BASIC\" panel for all durations that BASIC supports (1 DAY, 2 DAYS, 7 DAYS, 1 MONTH, PERMANENT).",
+      "reqIds": [
+        "REQ-61"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-new-panel-entry-to-the-panel-catalog-with-name-silent-aim-kripton-and-include-it-everywhere-panels-are-rendered-available-panels-grid-search-filter-and-the-pricing-table-use-the-exact-prices-provided-by-the-user-for-the-durations-they-specified",
+      "title": "Add a new panel entry to the panel catalog with name \"SILENT AIM KRIPTON\" and include it everywhere panels are rendered (Available Panels grid, search/filter, and the Pricing Table). Use the exact prices provided by the user for the durations they specified.",
+      "reqIds": [
+        "REQ-62"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-resolve-the-conflicting-duplicate-duration-provided-for-silent-aim-kripton-before-shipping-the-user-specified-two-different-prices-for-7-day-250-and-500-implement-the-new-panel-with-a-single-unambiguous-set-of-duration-keys-matching-the-site-s-duration-labels-e-g-7-days-and-ensure-no-panel-contains-duplicate-duration-entries-in-its-prices-array",
+      "title": "Resolve the conflicting/duplicate duration provided for \"SILENT AIM KRIPTON\" before shipping: the user specified two different prices for \"7 DAY\" (250 and 500). Implement the new panel with a single, unambiguous set of duration keys (matching the site’s duration labels, e.g., \"7 DAYS\"), and ensure no panel contains duplicate duration entries in its prices array.",
+      "reqIds": [
+        "REQ-63"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -488,6 +641,36 @@
     {
       "id": "AR-20",
       "summary": "Replace/update the current logo and banner with new premium versions and integrate them so they fit the dark cyberpunk UI without reducing text readability",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-21",
+      "summary": "Update global typography colors to use light white / light gray text for better readability across the dark-only UI",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-22",
+      "summary": "Add animated typography effects (animated fonts/text glow or subtle motion) while keeping the premium dark cyberpunk style",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-23",
+      "summary": "Convert the panel BUY flow into a step-by-step wizard: (1) select duration (days) → Next, (2) show payment method/UPI details → Next, (3) show WhatsApp/Discord buttons for payment proof/confirmation; make the UI more premium",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-24",
+      "summary": "Discount pricing update: set INTERNAL and AIMBOT VISIBLE prices to the same as BASIC prices (match BASIC for all durations)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-25",
+      "summary": "Add new panel “SILENT AIM KRIPTON” to Panels section (and pricing table) with prices: 1 DAY 150, 7 DAY 250, 7 DAY 500, 1 MONTH 1300, PERMANENT 3000",
       "reqIds": [],
       "status": "pending"
     }

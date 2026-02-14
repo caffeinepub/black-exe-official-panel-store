@@ -25,7 +25,7 @@ export function ContactSection() {
               <p className="font-display font-bold text-3xl mb-4 neon-glow-blue leading-tight">
                 WHATSAPP
               </p>
-              <p className="text-lg text-accent font-cyber font-bold">
+              <p className="text-lg text-muted-foreground font-cyber font-bold">
                 {WHATSAPP_NUMBER}
               </p>
             </div>
@@ -43,7 +43,7 @@ export function ContactSection() {
               <p className="font-display font-bold text-3xl mb-4 neon-glow-red leading-tight">
                 DISCORD
               </p>
-              <p className="text-lg text-accent font-cyber font-bold">
+              <p className="text-lg text-muted-foreground font-cyber font-bold">
                 Join our server
               </p>
             </div>

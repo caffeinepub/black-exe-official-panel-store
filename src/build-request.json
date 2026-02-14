@@ -1,108 +1,77 @@
 {
   "kind": "build_request",
-  "title": "Premium dark UI refresh, improve readability, and replace logo/banner assets",
+  "title": "Update panel pricing (discount INTERNAL + AIMBOT VISIBLE) and add new panel SILENT AIM KRIPTON",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-41",
-      "text": "Redesign the site UI to look more premium with a darker, cleaner cyberpunk palette (dark black/dark gray/dark blue) and consistent spacing/typography across all sections (Header, Section Navigation, Hero, Dashboard, Panels, Pricing Table, Contact, Payment modal).",
+      "id": "REQ-61",
+      "text": "Update the panel catalog pricing so that the panels named \"INTERNAL\" and \"AIMBOT VISIBLE\" have the exact same prices as the \"BASIC\" panel for all durations that BASIC supports (1 DAY, 2 DAYS, 7 DAYS, 1 MONTH, PERMANENT).",
       "target": "frontend",
       "source": {
         "messageIds": [
           "msg-3"
         ],
         "quotes": [
-          "UI acha bnao or colour sai sa lgao sai nhi LG rha dark colour lgao apni mrzi sa premium or acha sa UI bnao ..."
+          "INTERNAL OR AIMBOT VISIBLE KA PRICE SAME BASIC KA PRICE JITNA RAKHO DISCOUNT MA"
         ]
       },
       "acceptanceCriteria": [
-        "All primary UI surfaces (page background, glass panels, modals, navigation) use a cohesive dark palette with consistent border/glow treatment (no mismatched grays/blacks between sections).",
-        "Buttons/inputs/tabs have consistent premium hover + focus states aligned with the existing cyberpunk/glass style.",
-        "No existing flows are removed or broken (section switching, dashboard tabs, panel selection → duration selection → UPI copy → WhatsApp/Discord confirmation)."
+        "In frontend/src/data/panels.ts, the price list for INTERNAL exactly matches BASIC for every duration BASIC has.",
+        "In frontend/src/data/panels.ts, the price list for AIMBOT VISIBLE exactly matches BASIC for every duration BASIC has.",
+        "Panels UI cards (Available Panels) reflect the updated INTERNAL and AIMBOT VISIBLE price ranges.",
+        "Pricing Table section reflects the updated INTERNAL and AIMBOT VISIBLE prices for each duration."
       ]
     },
     {
-      "id": "REQ-42",
-      "text": "Fix site-wide text readability/visibility issues by improving contrast, font sizing, line-height, and background overlays wherever text is hard to see (especially over images and glass panels).",
+      "id": "REQ-62",
+      "text": "Add a new panel entry to the panel catalog with name \"SILENT AIM KRIPTON\" and include it everywhere panels are rendered (Available Panels grid, search/filter, and the Pricing Table). Use the exact prices provided by the user for the durations they specified.",
       "target": "frontend",
       "source": {
         "messageIds": [
           "msg-3"
         ],
         "quotes": [
-          "... or Jo LIKHA ha wo dikh ni rha wo bhi sai kro sb"
+          "PANEL MA 1 CHIZ OR ADD KRO NAME SILENT AIM KRIPTON",
+          "SILENT AIM KRIPTON KA PRICE 1 DAY 150 7 DAY 250 7 day 500 1 month 1300 permanent 3k"
         ]
       },
       "acceptanceCriteria": [
-        "Hero heading and subtext remain clearly readable over the banner image on mobile and desktop (no washed-out text, no blending into background).",
-        "All section headings, card titles, prices, and button labels are readable with strong contrast against their backgrounds in the dark theme.",
-        "No text is clipped/cropped/overlapping at common breakpoints (mobile, tablet, desktop)."
+        "A new panel named \"SILENT AIM KRIPTON\" is present in the Available Panels grid and is searchable by name.",
+        "The new panel appears as its own row/card in the Pricing Table section.",
+        "The new panel’s prices in the UI match the values implemented in frontend/src/data/panels.ts (no additional price changes elsewhere)."
       ]
     },
     {
-      "id": "REQ-43",
-      "text": "Replace the current site logo and banner with new premium versions and update the UI to use the new asset filenames (do not reduce hero text readability when applying the new banner).",
+      "id": "REQ-63",
+      "text": "Resolve the conflicting/duplicate duration provided for \"SILENT AIM KRIPTON\" before shipping: the user specified two different prices for \"7 DAY\" (250 and 500). Implement the new panel with a single, unambiguous set of duration keys (matching the site’s duration labels, e.g., \"7 DAYS\"), and ensure no panel contains duplicate duration entries in its prices array.",
       "target": "frontend",
       "source": {
         "messageIds": [
           "msg-3"
         ],
         "quotes": [
-          "... or logo or banner bhi change kr do SB premium bnao ..."
+          "... 7 DAY 250 7 day 500 ..."
         ]
       },
       "acceptanceCriteria": [
-        "Site header uses the new logo asset instead of the old one.",
-        "Hero section uses the new banner asset instead of the old one, with an overlay/opacity treatment that keeps the headline/subtext readable.",
-        "All asset references point to files under frontend/public/assets/generated and load correctly in preview (no broken images)."
-      ]
-    },
-    {
-      "id": "REQ-44",
-      "text": "Audit and correct any conflicting/unused global theme styling so the app consistently renders in the intended dark-only theme without accidental light-theme tokens affecting contrast.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-3"
-        ],
-        "quotes": [
-          "colour sai sa lgao sai nhi LG rha dark colour lgao"
-        ]
-      },
-      "acceptanceCriteria": [
-        "There is a single, consistent source of truth for theme tokens applied to the rendered app (no accidental overrides causing inconsistent foreground/background colors).",
-        "After the change, text and surfaces match the intended dark-only palette across all sections and the payment modal."
+        "The \"SILENT AIM KRIPTON\" panel has no duplicate duration labels in its prices array.",
+        "The Pricing Table does not render two values for the same duration for \"SILENT AIM KRIPTON\".",
+        "The Panels duration filter continues to function correctly (filtering by a duration only includes panels that define that duration)."
       ]
     }
   ],
   "constraints": [
-    "Do not change backend architecture; backend can remain unchanged.",
-    "Do not modify any files under frontend/immutablePaths (compose existing UI components instead).",
-    "Keep all existing panel definitions and INR prices unchanged.",
-    "Keep WhatsApp number constant as +923137863480 and keep Discord invite URL constant as https://discord.gg/black-exe (no hardcoded replacements).",
-    "Preserve the current purchase flow behavior (panel → duration selection → UPI copy → WhatsApp/Discord confirmation) while improving UI/UX and readability."
+    "Use English for any user-facing text introduced or modified by this change.",
+    "Do not edit files under frontend/src/components/ui (read-only components).",
+    "Keep the backend as-is; panel catalog/pricing changes must be done in the frontend data source (frontend/src/data/panels.ts)."
   ],
   "nonGoals": [
-    "Adding new backend features, storage, or databases.",
-    "Changing business logic for pricing, durations, or panel availability.",
-    "Adding new authentication providers (Internet Identity remains the only supported auth option).",
-    "Introducing a light theme or theme toggle."
+    "Do not change any existing panel names other than adding the new \"SILENT AIM KRIPTON\" entry.",
+    "Do not change the payment flow, WhatsApp/Discord link behavior, or UPI configuration as part of this request.",
+    "Do not introduce new durations beyond the site’s existing duration system unless explicitly confirmed by the user."
   ],
   "imageRequirements": {
     "required": [],
-    "edits": [
-      "Premium cyberpunk emblem-style logo with sharper details, transparent background (black-exe-logo-transparent.dim_1024x1024.png > black-exe-logo-premium-transparent.dim_1024x1024.png)",
-      "Premium wide cyberpunk banner background with darker, cleaner composition and safe text area for readability (black-exe-banner.dim_1920x720.png > black-exe-banner-premium.dim_1920x720.png)"
-    ]
-  },
-  "userProfileUpdate": {
-    "goalsToAdd": [],
-    "goalsToRemove": [],
-    "preferencesToAdd": [],
-    "preferencesToRemove": [],
-    "miscToAdd": [],
-    "miscToRemove": [],
-    "fieldsToSet": {},
-    "fieldsToDelete": []
+    "edits": []
   }
 }
